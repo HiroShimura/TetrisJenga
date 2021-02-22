@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MinoController : MonoBehaviour {
+public class MinoToucher : MonoBehaviour {
     Ray ray;
     RaycastHit hit;
     bool beRay = false;
@@ -32,7 +32,12 @@ public class MinoController : MonoBehaviour {
     void RayCheck() {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
-            beRay = true;
+            if (target.tag == "Mino") {
+                beRay = true;
+            }
+            else {
+                beRay = false;
+            }
         }
         /*
         if (Physics.Raycast(ray, out hit) && hit.collider == gameObject.GetComponent<Collider>()) {

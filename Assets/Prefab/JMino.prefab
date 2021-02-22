@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7683957456878927857}
   m_Layer: 0
   m_Name: JMino
-  m_TagString: Untagged
+  m_TagString: Mino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

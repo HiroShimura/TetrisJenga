@@ -14,9 +14,9 @@ public class JengaGenerator : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         for (int i = 1; i < 5; i++) {
-            int random = i - 1;// Random.Range(0, 4);
+            int random = i - 1; // Random.Range(0, 4);
             float high = (i - 0.5f) * 1.05f;
-            int type = 8;// Random.Range(1, 8);
+            int type = 9; // Random.Range(1, 8);
             switch (type) {
                 case 1:
                     Type1(direction[random], high);
@@ -67,10 +67,10 @@ break;
     }
 
     void Type1(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // ▲ ○ △ △
+        // ▲ ○ ○ △
+        // ▲ ▲ ○ △
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject lMino1 = Instantiate(lMinoPrefab);
         GameObject sMino = Instantiate(sMinoPrefab);
@@ -121,10 +121,10 @@ break;
         }
     }
     void Type2(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠ 
+        // ■ ■ ◇ □
+        // ■ ◇ ◇ □
+        // ■ ◇ □ □
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject jMino1 = Instantiate(jMinoPrefab);
         GameObject zMino = Instantiate(zMinoPrefab);
@@ -175,10 +175,10 @@ break;
         }
     }
     void Type3(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // □ □ ○ ○
+        // □ ○ ○ △
+        // □ △ △ △
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject sMino = Instantiate(sMinoPrefab);
         GameObject lMino = Instantiate(lMinoPrefab);
@@ -229,10 +229,10 @@ break;
         }
     }
     void Type4(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // ◇ ◇ △ △
+        // □ ◇ ◇ △
+        // □ □ □ △
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject lMino = Instantiate(lMinoPrefab);
         GameObject jMino = Instantiate(jMinoPrefab);
@@ -283,10 +283,10 @@ break;
         }
     }
     void Type5(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // ＆ ＆ △ △
+        // ＆ ＆ ▲ △
+        // ▲ ▲ ▲ △
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject lMino1 = Instantiate(lMinoPrefab);
         GameObject lMino2 = Instantiate(lMinoPrefab);
@@ -337,10 +337,10 @@ break;
         }
     }
     void Type6(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // □ □ ＆ ＆
+        // □ ■ ＆ ＆
+        // □ ■ ■ ■
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject jMino1 = Instantiate(jMinoPrefab);
         GameObject jMino2 = Instantiate(jMinoPrefab);
@@ -391,10 +391,10 @@ break;
         }
     }
     void Type7(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // ★ □ □ □
+        // ★ ★ ☆ □
+        // ★ ☆ ☆ ☆
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject jMino = Instantiate(jMinoPrefab);
         GameObject tMino1 = Instantiate(tMinoPrefab);
@@ -445,10 +445,10 @@ break;
         }
     }
     void Type8(char direction, float high) {
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // △ △ △ ★
+        // △ ☆ ★ ★
+        // ☆ ☆ ☆ ★
         GameObject iMino = Instantiate(iMinoPrefab);
         GameObject lMino = Instantiate(lMinoPrefab);
         GameObject tMino1 = Instantiate(tMinoPrefab);
@@ -500,10 +500,10 @@ break;
     }
     void Type9(char direction, float high) {
         /*
-        //
-        //
-        //
-        //
+        // △ △ △ ★
+        // △ ◇ ★ ★
+        // ◇ ◇ ☆ ★
+        // ◇ ☆ ☆ ☆
         GameObject ;
         GameObject ;
         GameObject ;
@@ -528,10 +528,10 @@ break;
     }
     void Type10(char direction, float high) {
         /*
-        //
-        //
-        //
-        //
+        // ★ □ □ □
+        // ★ ★ ○ □
+        // ★ ☆ ○ ○
+        // ☆ ☆ ☆ ○
         GameObject ;
         GameObject ;
         GameObject ;
@@ -556,10 +556,10 @@ break;
     }
     void Type11(char direction, float high) {
         /*
-        //
-        //
-        //
-        //
+        // △ △ △ ◇
+        // △ ◆ ◇ ◇
+        // ◆ ◆ ◇ ▲
+        // ◆ ▲ ▲ ▲
         GameObject ;
         GameObject ;
         GameObject ;
@@ -584,10 +584,10 @@ break;
     }
     void Type12(char direction, float high) {
         /*
-        //
-        //
-        //
-        //
+        // ○ □ □ □
+        // ○ ○ ● □
+        // ■ ○ ● ●
+        // ■ ■ ■ ●
         GameObject ;
         GameObject ;
         GameObject ;
@@ -612,10 +612,10 @@ break;
     }
     void Type13(char direction, float high) {
         /*
-        //
-        //
-        //
-        //
+        // ＠ ＠ ＠ ＠
+        // △ ＆ ＆ □
+        // △ ＆ ＆ □
+        // △ △ □ □
         GameObject ;
         GameObject ;
         GameObject ;

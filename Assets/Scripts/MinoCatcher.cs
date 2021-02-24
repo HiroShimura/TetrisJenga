@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MinoToucher : MonoBehaviour {
+public class MinoCatcher : MonoBehaviour {
     Ray ray;
     RaycastHit hit;
     bool beRay = false;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class JengaGenerator : MonoBehaviour {
     public GameObject tMinoPrefab;
@@ -13,55 +14,71 @@ public class JengaGenerator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        List<int> index = new List<int> { 0, 1, 2, 3 };
+        int random = Random.Range(0, 4);
+
         for (int i = 1; i < 13; i++) {
-            int random = Random.Range(0, 4);
+
             float high = (i - 0.5f) * 1.01f;
             int type = Random.Range(1, 9);
             switch (type) {
                 case 1:
-                    Type1(direction[random], high);
+                    Type1(direction[index[random]], high);
                     break;
                 case 2:
-                    Type2(direction[random], high);
+                    Type2(direction[index[random]], high);
                     break;
                 case 3:
-                    Type3(direction[random], high);
+                    Type3(direction[index[random]], high);
                     break;
                 case 4:
-                    Type4(direction[random], high);
+                    Type4(direction[index[random]], high);
                     break;
                 case 5:
-                    Type5(direction[random], high);
+                    Type5(direction[index[random]], high);
                     break;
                 case 6:
-                    Type6(direction[random], high);
+                    Type6(direction[index[random]], high);
                     break;
                 case 7:
-                    Type7(direction[random], high);
+                    Type7(direction[index[random]], high);
                     break;
                 case 8:
-                    Type8(direction[random], high);
+                    Type8(direction[index[random]], high);
                     break;
                 /*
 
 case 9:
-Type9(direction[random], high);
+Type9(direction[index[random]], high);
 break;
 case 10:
-Type10(direction[random], high);
+Type10(direction[index[random]], high);
 break;
 case 11:
-Type11(direction[random], high);
+Type11(direction[index[random]], high);
 break;
 case 12:
-Type12(direction[random], high);
+Type12(direction[index[random]], high);
 break;
 case 13:
-Type13(direction[random], high);
+Type13(direction[index[random]], high);
 break;
 */
                 default:
                     break;
+            }
+
+            if (index.Count == 4) {
+                index.RemoveAt(random);
+                random = Random.Range(0, 3);
+            }
+            else if (index.Count == 3) {
+                index.RemoveAt(random);
+                random = Random.Range(0, 2);
+            }
+            else {
+                index = new List<int> { 0, 1, 2, 3 };
+                random = Random.Range(0, 4);
             }
         }
     }

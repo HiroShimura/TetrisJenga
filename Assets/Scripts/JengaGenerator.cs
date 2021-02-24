@@ -13,10 +13,10 @@ public class JengaGenerator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        for (int i = 1; i < 5; i++) {
-            int random = i - 1; // Random.Range(0, 4);
-            float high = (i - 0.5f) * 1.05f;
-            int type = 9; // Random.Range(1, 8);
+        for (int i = 1; i < 13; i++) {
+            int random = Random.Range(0, 4);
+            float high = (i - 0.5f) * 1.01f;
+            int type = Random.Range(1, 9);
             switch (type) {
                 case 1:
                     Type1(direction[random], high);

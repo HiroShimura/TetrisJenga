@@ -10,73 +10,69 @@ public class JengaGenerator : MonoBehaviour {
     public GameObject jMinoPrefab;
     public GameObject lMinoPrefab;
 
-    char[] direction = { 'N', 'E', 'W', 'S' };
+    List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
     // Start is called before the first frame update
     void Start() {
-        List<int> index = new List<int> { 0, 1, 2, 3 };
         int random = Random.Range(0, 4);
-
-        for (int i = 1; i < 13; i++) {
-
+        for (int i = 1; i < 5; i++) {
             float high = (i - 0.5f) * 1.01f;
-            int type = Random.Range(1, 9);
+            int type = 1;// Random.Range(1, 9);
             switch (type) {
                 case 1:
-                    Type1(direction[index[random]], high);
+                    Type1(direction[random], high);
                     break;
                 case 2:
-                    Type2(direction[index[random]], high);
+                    Type2(direction[random], high);
                     break;
                 case 3:
-                    Type3(direction[index[random]], high);
+                    Type3(direction[random], high);
                     break;
                 case 4:
-                    Type4(direction[index[random]], high);
+                    Type4(direction[random], high);
                     break;
                 case 5:
-                    Type5(direction[index[random]], high);
+                    Type5(direction[random], high);
                     break;
                 case 6:
-                    Type6(direction[index[random]], high);
+                    Type6(direction[random], high);
                     break;
                 case 7:
-                    Type7(direction[index[random]], high);
+                    Type7(direction[random], high);
                     break;
                 case 8:
-                    Type8(direction[index[random]], high);
+                    Type8(direction[random], high);
                     break;
                 case 9:
-                    Type9(direction[index[random]], high);
+                    Type9(direction[random], high);
                     break;
                 case 10:
-                    Type10(direction[index[random]], high);
+                    Type10(direction[random], high);
                     break;
                 /*
 case 11:
-Type11(direction[index[random]], high);
+Type11(direction[random], high);
 break;
 case 12:
-Type12(direction[index[random]], high);
+Type12(direction[random], high);
 break;
 case 13:
-Type13(direction[index[random]], high);
+Type13(direction[random], high);
 break;
 */
                 default:
                     break;
             }
-
-            if (index.Count == 4) {
-                index.RemoveAt(random);
+            if (direction.Count == 4) {
+                direction.RemoveAt(random);
                 random = Random.Range(0, 3);
             }
-            else if (index.Count == 3) {
-                index.RemoveAt(random);
+            else if (direction.Count == 3) {
+                direction.RemoveAt(random);
                 random = Random.Range(0, 2);
             }
             else {
-                index = new List<int> { 0, 1, 2, 3 };
+                direction = new List<char> { 'N', 'E', 'W', 'S' };
                 random = Random.Range(0, 4);
             }
         }

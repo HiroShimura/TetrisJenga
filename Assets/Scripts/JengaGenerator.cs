@@ -20,44 +20,44 @@ public class JengaGenerator : MonoBehaviour {
             int type = 1;// Random.Range(1, 9);
             switch (type) {
                 case 1:
-                    Type1(direction[random], high);
+                    Type1(direction[random], high, i);
                     break;
                 case 2:
-                    Type2(direction[random], high);
+                    Type2(direction[random], high, i);
                     break;
                 case 3:
-                    Type3(direction[random], high);
+                    Type3(direction[random], high, i);
                     break;
                 case 4:
-                    Type4(direction[random], high);
+                    Type4(direction[random], high, i);
                     break;
                 case 5:
-                    Type5(direction[random], high);
+                    Type5(direction[random], high, i);
                     break;
                 case 6:
-                    Type6(direction[random], high);
+                    Type6(direction[random], high, i);
                     break;
                 case 7:
-                    Type7(direction[random], high);
+                    Type7(direction[random], high, i);
                     break;
                 case 8:
-                    Type8(direction[random], high);
+                    Type8(direction[random], high, i);
                     break;
                 case 9:
-                    Type9(direction[random], high);
+                    Type9(direction[random], high, i);
                     break;
                 case 10:
-                    Type10(direction[random], high);
+                    Type10(direction[random], high, i);
                     break;
                 /*
 case 11:
-Type11(direction[random], high);
+Type11(direction[random], high, i);
 break;
 case 12:
-Type12(direction[random], high);
+Type12(direction[random], high, i);
 break;
 case 13:
-Type13(direction[random], high);
+Type13(direction[random], high, i);
 break;
 */
                 default:
@@ -78,15 +78,19 @@ break;
         }
     }
 
-    void Type1(char direction, float high) {
+    void Type1(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // ▲ ○ △ △
         // ▲ ○ ○ △
         // ▲ ▲ ○ △
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject lMino1 = Instantiate(lMinoPrefab);
+        lMino1.name = $"{layer}_2";
         GameObject sMino = Instantiate(sMinoPrefab);
+        sMino.name = $"{layer}_3";
         GameObject lMino2 = Instantiate(lMinoPrefab);
+        lMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -132,15 +136,19 @@ break;
                 break;
         }
     }
-    void Type2(char direction, float high) {
+    void Type2(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠ 
         // ■ ■ ◇ □
         // ■ ◇ ◇ □
         // ■ ◇ □ □
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject jMino1 = Instantiate(jMinoPrefab);
+        jMino1.name = $"{layer}_2";
         GameObject zMino = Instantiate(zMinoPrefab);
+        zMino.name = $"{layer}_3";
         GameObject jMino2 = Instantiate(jMinoPrefab);
+        jMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -186,15 +194,19 @@ break;
                 break;
         }
     }
-    void Type3(char direction, float high) {
+    void Type3(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // □ □ ○ ○
         // □ ○ ○ △
         // □ △ △ △
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject sMino = Instantiate(sMinoPrefab);
+        sMino.name = $"{layer}_2";
         GameObject lMino = Instantiate(lMinoPrefab);
+        lMino.name = $"{layer}_3";
         GameObject jMino = Instantiate(jMinoPrefab);
+        jMino.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -240,15 +252,19 @@ break;
                 break;
         }
     }
-    void Type4(char direction, float high) {
+    void Type4(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // ◇ ◇ △ △
         // □ ◇ ◇ △
         // □ □ □ △
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject lMino = Instantiate(lMinoPrefab);
+        lMino.name = $"{layer}_2";
         GameObject jMino = Instantiate(jMinoPrefab);
+        jMino.name = $"{layer}_3";
         GameObject zMino = Instantiate(zMinoPrefab);
+        zMino.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -294,15 +310,19 @@ break;
                 break;
         }
     }
-    void Type5(char direction, float high) {
+    void Type5(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // ＆ ＆ △ △
         // ＆ ＆ ▲ △
         // ▲ ▲ ▲ △
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject lMino1 = Instantiate(lMinoPrefab);
+        lMino1.name = $"{layer}_2";
         GameObject lMino2 = Instantiate(lMinoPrefab);
+        lMino2.name = $"{layer}_3";
         GameObject oMino = Instantiate(oMinoPrefab);
+        oMino.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -348,15 +368,19 @@ break;
                 break;
         }
     }
-    void Type6(char direction, float high) {
+    void Type6(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // □ □ ＆ ＆
         // □ ■ ＆ ＆
         // □ ■ ■ ■
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject jMino1 = Instantiate(jMinoPrefab);
+        jMino1.name = $"{layer}_2";
         GameObject jMino2 = Instantiate(jMinoPrefab);
+        jMino2.name = $"{layer}_3";
         GameObject oMino = Instantiate(oMinoPrefab);
+        oMino.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -402,15 +426,19 @@ break;
                 break;
         }
     }
-    void Type7(char direction, float high) {
+    void Type7(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // ★ □ □ □
         // ★ ★ ☆ □
         // ★ ☆ ☆ ☆
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject jMino = Instantiate(jMinoPrefab);
+        jMino.name = $"{layer}_2";
         GameObject tMino1 = Instantiate(tMinoPrefab);
+        tMino1.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
+        tMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -456,15 +484,19 @@ break;
                 break;
         }
     }
-    void Type8(char direction, float high) {
+    void Type8(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // △ △ △ ★
         // △ ☆ ★ ★
         // ☆ ☆ ☆ ★
         GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
         GameObject lMino = Instantiate(lMinoPrefab);
+        lMino.name = $"{layer}_2";
         GameObject tMino1 = Instantiate(tMinoPrefab);
+        tMino1.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
+        tMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -510,15 +542,19 @@ break;
                 break;
         }
     }
-    void Type9(char direction, float high) {
+    void Type9(char direction, float high, int layer) {
         // △ △ △ ★
         // △ ◇ ★ ★
         // ◇ ◇ ☆ ★
         // ◇ ☆ ☆ ☆
         GameObject lMino = Instantiate(lMinoPrefab);
+        lMino.name = $"{layer}_1";
         GameObject tMino1 = Instantiate(tMinoPrefab);
+        tMino1.name = $"{layer}_2";
         GameObject tMino2 = Instantiate(tMinoPrefab);
+        tMino2.name = $"{layer}_3";
         GameObject zMino = Instantiate(zMinoPrefab);
+        zMino.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 lMino.transform.position = new Vector3(1, high, 0.5f);
@@ -564,15 +600,19 @@ break;
                 break;
         }
     }
-    void Type10(char direction, float high) {
+    void Type10(char direction, float high, int layer) {
         // ★ □ □ □
         // ★ ★ ○ □
         // ★ ☆ ○ ○
         // ☆ ☆ ☆ ○
         GameObject tMino1 = Instantiate(tMinoPrefab);
+        tMino1.name = $"{layer}_1";
         GameObject jMino = Instantiate(jMinoPrefab);
+        jMino.name = $"{layer}_2";
         GameObject sMino = Instantiate(sMinoPrefab);
+        sMino.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
+        tMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
                 tMino1.transform.position = new Vector3(0.5f, high, 1.5f);
@@ -618,7 +658,7 @@ break;
                 break;
         }
     }
-    void Type11(char direction, float high) {
+    void Type11(char direction, float high, int layer) {
         /*
         // △ △ △ ◇
         // △ ◆ ◇ ◇
@@ -646,7 +686,7 @@ break;
         }
         */
     }
-    void Type12(char direction, float high) {
+    void Type12(char direction, float high, int layer) {
         /*
         // ○ □ □ □
         // ○ ○ ● □
@@ -674,7 +714,7 @@ break;
         }
         */
     }
-    void Type13(char direction, float high) {
+    void Type13(char direction, float high, int layer) {
         /*
         // ＠ ＠ ＠ ＠
         // △ ＆ ＆ □

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7827774495871219039}
   - component: {fileID: 7827774495871219034}
   - component: {fileID: 7827774495871219013}
+  - component: {fileID: 8791380049354044079}
   m_Layer: 0
   m_Name: IMino
   m_TagString: Mino
@@ -2966,7 +2967,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7827774495871219036}
-  m_Material: {fileID: 13400000, guid: 6042f78a7766e4d42bd301235b28189d, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 4
@@ -3002,3 +3003,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8791380049354044079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827774495871219036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c553681324b384ba8a481f9103d102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

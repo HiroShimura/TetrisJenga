@@ -16,13 +16,15 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 preMousePos;
 
-    // public GameObject focusObject;
+    void Start() {
 
-    private void Update() {
+    }
+
+    void Update() {
         MouseUpdate();
     }
 
-    private void MouseUpdate() {
+    void MouseUpdate() {
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         if (scrollWheel != 0.0f) {
             MouseWheel(scrollWheel);
@@ -35,12 +37,12 @@ public class CameraController : MonoBehaviour {
         MouseDrag(Input.mousePosition);
     }
 
-    private void MouseWheel(float delta) {
+    void MouseWheel(float delta) {
         transform.position += transform.forward * delta * wheelSpeed;
         return;
     }
 
-    private void MouseDrag(Vector3 mousePos) {
+    void MouseDrag(Vector3 mousePos) {
         Vector3 diff = mousePos - preMousePos;
         if (diff.magnitude < Vector3.kEpsilon) {
             return;
@@ -58,5 +60,15 @@ public class CameraController : MonoBehaviour {
         Vector3 focusObjectPos = new Vector3(0, 0, 0);
         transform.RotateAround(focusObjectPos, transform.right, angle.x);
         transform.RotateAround(focusObjectPos, Vector3.up, angle.y);
+    }
+
+    void OnDestroy() {
+        /*
+        int high // ジェンガの高さ（整数でおｋ）
+        highを調べる
+        if(high > デフォルトの高さ){
+        最上段にミノが積めるような位置にカメラを移動
+        }
+        */
     }
 }

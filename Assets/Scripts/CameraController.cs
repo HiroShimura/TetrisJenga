@@ -34,6 +34,10 @@ public class CameraController : MonoBehaviour {
            Input.GetMouseButtonDown(2)) {
             preMousePos = Input.mousePosition;
         }
+        if (Input.GetMouseButtonUp(1) ||
+           Input.GetMouseButtonUp(2)) {
+            Cursor.visible = true;
+        }
         MouseDrag(Input.mousePosition);
     }
 
@@ -48,9 +52,11 @@ public class CameraController : MonoBehaviour {
             return;
         }
         if (Input.GetMouseButton(2)) {
+            Cursor.visible = false;
             transform.Translate(-diff * Time.deltaTime * moveSpeed);
         }
         else if (Input.GetMouseButton(1)) {
+            Cursor.visible = false;
             CameraRotate(new Vector2(-diff.y, diff.x) * rotateSpeed);
         }
         preMousePos = mousePos;

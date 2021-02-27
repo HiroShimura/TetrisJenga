@@ -16,23 +16,33 @@ public class MinoCatcher : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RayCheck();
-            PositionCheck();
+        try {
+            if (Input.GetMouseButtonDown(0)) {
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RayCheck();
+                PositionCheck();
+            }
+            if (beRay) {
+                MovePosition();
+            }
+            if (!beRay) {
+            }
+            if (Input.GetMouseButtonUp(0)) {
+                beRay = false;
+            }
         }
-        if (beRay) {
-            MovePosition();
-        }
-        if (Input.GetMouseButtonUp(0)) {
-            beRay = false;
+        catch (System.NullReferenceException) {
+            if (target = null) {
+                Debug.Log("カーソルをミノに合わせてください");
+                throw;
+            }
         }
     }
 
     void RayCheck() {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
-            if (target.tag == "Mino") {
+            if (target.CompareTag("Mino")) {
                 beRay = true;
             }
             else {

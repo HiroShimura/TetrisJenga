@@ -17,7 +17,7 @@ public class JengaGenerator : MonoBehaviour {
         int random = Random.Range(0, 4);
         for (int i = 1; i < 5; i++) {
             float high = (i - 0.5f) * 1.01f;
-            int type = 1;// Random.Range(1, 9);
+            int type = 1;// Random.Range(1, 11);
             switch (type) {
                 case 1:
                     Type1(direction[random], high, i);
@@ -743,8 +743,13 @@ break;
         */
     }
 
+    GameObject fallingMino;
     // Update is called once per frame
     void Update() {
+
+    }
+
+    private void OnDestroy() {
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class JengaGenerator : MonoBehaviour {
+public class JengaController : MonoBehaviour {
     public GameObject tMinoPrefab;
     public GameObject iMinoPrefab;
     public GameObject oMinoPrefab;

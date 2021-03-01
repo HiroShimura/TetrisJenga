@@ -22,20 +22,18 @@ public class MinoCatcher : MonoBehaviour {
                 RayCheck();
                 PositionCheck();
             }
-            if (beRay) {
-                MovePosition();
-            }
-            if (!beRay) {
-            }
-            if (Input.GetMouseButtonUp(0)) {
-                beRay = false;
-            }
         }
         catch (System.NullReferenceException) {
-            if (target = null) {
-                Debug.Log("カーソルをミノに合わせてください");
-                throw;
-            }
+            Debug.Log("カーソルをミノに合わせてください");
+        }
+        catch (MissingReferenceException) {
+            Debug.Log("カーソルをミノに合わせてください");
+        }
+        if (beRay) {
+            MovePosition();
+        }
+        if (Input.GetMouseButtonUp(0)) {
+            beRay = false;
         }
     }
 
@@ -73,6 +71,14 @@ public class MinoCatcher : MonoBehaviour {
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;
         Vector3 moveTo = Camera.main.ScreenToWorldPoint(mousePos);
-        target.transform.position = new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z);
+        try {
+            if (target.transform.position.x < -6 || target.transform.position.x > 6 || target.transform.position.z < -6 || target.transform.position.z > 6) {
+                Destroy(target);
+            }
+            target.transform.position = new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z);
+        }
+        catch (MissingReferenceException) {
+            Debug.Log("ミノが消えました");
+        }
     }
 }

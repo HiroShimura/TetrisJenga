@@ -7,9 +7,10 @@ public class Memo : MonoBehaviour {
      * 
      * ミノの高さを調べる方法を用意し、ミノを積む際のカメラ移動とペナルティーで利用
      * 
-     * ミノがTableの外側に落ちるかTableに触れたらGameOver
-     * 下のミノからRigidbodyを無効化&灰色マテリアルを適用（できれば下方向からのグラデーション付き）でTETRIS99みたいなミノが灰色になるアニメーションを再現可能か？
+     * ミノがy < -50（仮）になるか、タグ"Mino"のオブジェクトがTableに触れたらGameOver（掴んでいる間は"BottomMino"になるようにMinoCatcherをコーディング済み）
+     * GameOverになったら下のミノからRigidbodyを無効化&灰色マテリアルを適用（できれば下方向からのグラデーション付き）でTETRIS99のようなアニメーションを再現可能か...？
      * GameOverの時点でCameraControllerやMinoCatcherを無効化するのを忘れずに
+     * 
      */
 
     // Start is called before the first frame update

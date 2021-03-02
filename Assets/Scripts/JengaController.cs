@@ -78,6 +78,11 @@ break;
         }
     }
 
+    // Update is called once per frame
+    void Update() {
+
+    }
+
     void Type1(char direction, float high, int layer) {
         // ＠ ＠ ＠ ＠
         // ▲ ○ △ △
@@ -91,6 +96,12 @@ break;
         sMino.name = $"{layer}_3";
         GameObject lMino2 = Instantiate(lMinoPrefab);
         lMino2.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino1.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            lMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -149,6 +160,12 @@ break;
         zMino.name = $"{layer}_3";
         GameObject jMino2 = Instantiate(jMinoPrefab);
         jMino2.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            jMino1.tag = "BottomMino";
+            zMino.tag = "BottomMino";
+            jMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -207,6 +224,12 @@ break;
         lMino.name = $"{layer}_3";
         GameObject jMino = Instantiate(jMinoPrefab);
         jMino.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            lMino.tag = "BottomMino";
+            jMino.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -265,6 +288,12 @@ break;
         jMino.name = $"{layer}_3";
         GameObject zMino = Instantiate(zMinoPrefab);
         zMino.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino.tag = "BottomMino";
+            jMino.tag = "BottomMino";
+            zMino.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -323,6 +352,12 @@ break;
         lMino2.name = $"{layer}_3";
         GameObject oMino = Instantiate(oMinoPrefab);
         oMino.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino1.tag = "BottomMino";
+            lMino2.tag = "BottomMino";
+            oMino.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -381,6 +416,12 @@ break;
         jMino2.name = $"{layer}_3";
         GameObject oMino = Instantiate(oMinoPrefab);
         oMino.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            jMino1.tag = "BottomMino";
+            jMino2.tag = "BottomMino";
+            oMino.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -439,6 +480,12 @@ break;
         tMino1.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
         tMino2.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            jMino.tag = "BottomMino";
+            tMino1.tag = "BottomMino";
+            tMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -497,6 +544,12 @@ break;
         tMino1.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
         tMino2.name = $"{layer}_4";
+        if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino.tag = "BottomMino";
+            tMino1.tag = "BottomMino";
+            tMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 iMino.transform.position = new Vector3(1.5f, high, 0);
@@ -555,6 +608,12 @@ break;
         tMino2.name = $"{layer}_3";
         GameObject zMino = Instantiate(zMinoPrefab);
         zMino.name = $"{layer}_4";
+        if (layer == 1) {
+            lMino.tag = "BottomMino";
+            tMino1.tag = "BottomMino";
+            tMino2.tag = "BottomMino";
+            zMino.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 lMino.transform.position = new Vector3(1, high, 0.5f);
@@ -613,6 +672,12 @@ break;
         sMino.name = $"{layer}_3";
         GameObject tMino2 = Instantiate(tMinoPrefab);
         tMino2.name = $"{layer}_4";
+        if (layer == 1) {
+            tMino1.tag = "BottomMino";
+            jMino.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            tMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
                 tMino1.transform.position = new Vector3(0.5f, high, 1.5f);
@@ -668,6 +733,12 @@ break;
         GameObject ;
         GameObject ;
         GameObject ;
+                if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino1.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            lMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
 
@@ -696,6 +767,12 @@ break;
         GameObject ;
         GameObject ;
         GameObject ;
+                if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino1.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            lMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
 
@@ -724,6 +801,12 @@ break;
         GameObject ;
         GameObject ;
         GameObject ;
+                if (layer == 1) {
+            iMino.tag = "BottomMino";
+            lMino1.tag = "BottomMino";
+            sMino.tag = "BottomMino";
+            lMino2.tag = "BottomMino";
+        }
         switch (direction) {
             case 'N':
 
@@ -744,10 +827,6 @@ break;
     }
 
     GameObject fallingMino;
-    // Update is called once per frame
-    void Update() {
-
-    }
 
     private void OnDestroy() {
 

@@ -33,6 +33,9 @@ public class MinoCatcher : MonoBehaviour {
             target = null;
         }
         if (Input.GetMouseButtonUp(0)) {
+            if (target != null) {
+                target.tag = "Mino";
+            }
             beRay = false;
         }
     }
@@ -40,8 +43,9 @@ public class MinoCatcher : MonoBehaviour {
     void RayCheck() {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
-            if (target.CompareTag("Mino")) {
+            if (target.CompareTag("Mino") || target.CompareTag("BottomMino")) {
                 beRay = true;
+                target.tag = "BottomMino";
             }
             else {
                 beRay = false;

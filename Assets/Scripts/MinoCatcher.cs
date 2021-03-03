@@ -79,6 +79,6 @@ public class MinoCatcher : MonoBehaviour {
             Destroy(target);
             beRay = false;
         }
-        target.transform.position = new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z);
+        target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
     }
 }

@@ -12,9 +12,13 @@ public class MinoDetail : MonoBehaviour {
     }
 
     private void OnMouseEnter() {
-        Debug.Log("マウスオーバー");
+        if (!(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
+            Debug.Log("マウスオーバー");
+        }
     }
     private void OnMouseExit() {
-        Debug.Log("カーソルが外れました");
+        if (!(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
+            Debug.Log("カーソルが外れました");
+        }
     }
 }

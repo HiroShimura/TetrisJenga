@@ -3,6 +3,8 @@
 public class Memo : MonoBehaviour {
 
     /*
+     * https://soft-rime.com/unity/post-3009/
+     * 
      * ミノを積んだ後の次のプレイヤーへの入れ替えにはコルーチンを使う（3～4秒くらい？）
      * 
      * ミノの高さを調べる方法を用意し、ミノを積む際のカメラ移動とペナルティーで利用

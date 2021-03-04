@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mino
   - BottomMino
+  - SelectedMino
   layers:
   - Default
   - TransparentFX

@@ -10,13 +10,15 @@ public class JengaController : MonoBehaviour {
     public GameObject jMinoPrefab;
     public GameObject lMinoPrefab;
 
+    [field: SerializeField, Range(4, 12)]
+    public int Layers { get; set; }
+
     List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
     // Start is called before the first frame update
     void Start() {
-        int layerNum = GameObject.Find("GameMaster").GetComponent<GameMaster>().Layers + 1;
         int random = Random.Range(0, 4);
-        for (int i = 1; i < layerNum; i++) {
+        for (int i = 1; i < Layers + 1; i++) {
             float high = (i - 0.5f) * 1.01f;
             int type = 1;// Random.Range(1, 11);
             switch (type) {

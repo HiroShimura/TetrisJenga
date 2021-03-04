@@ -7,6 +7,7 @@ public class MinoCatcher : MonoBehaviour {
     GameObject target;
     Vector3 targetPos;
     Vector3 offset;
+    bool search;
 
     // Start is called before the first frame update
     void Start() {
@@ -16,26 +17,23 @@ public class MinoCatcher : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        try {
-            if (Input.GetMouseButtonDown(0)) {
-                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RayCheck();
-                PositionCheck();
-            }
+        if (Input.GetMouseButtonDown(0)) {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RayCheck();
+            PositionCheck();
         }
-        catch (System.NullReferenceException) {
-            Debug.Log("カーソルをミノに合わせてください: Null");
-        }
+
         if (beRay) {
             MovePosition();
         }
         else if (!beRay) {
             target = null;
-        }
-        if (Input.GetMouseButtonUp(0)) {
-            if (target != null) {
-                target.tag = "Mino";
+            if (search) {
+                Debug.Log("一度移動させたミノ以外を操作することはできません");
             }
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
             beRay = false;
         }
     }
@@ -43,31 +41,37 @@ public class MinoCatcher : MonoBehaviour {
     void RayCheck() {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
+            search = SearchSelectedMino();
             if (target.CompareTag("Mino") || target.CompareTag("BottomMino")) {
+                if (search) {
+                    beRay = false;
+                }
+                else if (!search) {
+                    beRay = true;
+                    target.tag = "SelectedMino";
+                }
+            }
+            else if (target.CompareTag("SelectedMino")) {
                 beRay = true;
-                target.tag = "BottomMino";
             }
             else {
                 beRay = false;
             }
         }
-        /*
-        if (Physics.Raycast(ray, out hit) && hit.collider == gameObject.GetComponent<Collider>()) {
-            beRay = true;
-        }
-        */
         else {
             beRay = false;
         }
     }
 
     void PositionCheck() {
-        Vector3 mousePos = Input.mousePosition;
-        float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
-        mousePos.z = depth;
-        targetPos = target.transform.position;
-        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        offset = targetPos - worldMousePos;
+        if (target != null) {
+            Vector3 mousePos = Input.mousePosition;
+            float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
+            mousePos.z = depth;
+            targetPos = target.transform.position;
+            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            offset = targetPos - worldMousePos;
+        }
     }
 
     void MovePosition() {
@@ -80,5 +84,22 @@ public class MinoCatcher : MonoBehaviour {
             beRay = false;
         }
         target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
+    }
+
+    bool SearchSelectedMino() {
+        int layer = 1;
+        GameObject selectedMino;
+        while (true) {
+            for (int num = 1; num < 5; num++) {
+                selectedMino = GameObject.Find($"{layer}_{num}");
+                if (selectedMino == null) {
+                    return false;
+                }
+                else if (selectedMino.CompareTag("SelectedMino")) {
+                    return true;
+                }
+            }
+            layer++;
+        }
     }
 }

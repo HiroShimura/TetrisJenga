@@ -7,7 +7,6 @@ public class MinoCatcher : MonoBehaviour {
     GameObject target;
     Vector3 targetPos;
     Vector3 offset;
-    bool search;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,9 +27,6 @@ public class MinoCatcher : MonoBehaviour {
         }
         else if (!beRay) {
             target = null;
-            if (search) {
-                Debug.Log("一度移動させたミノ以外を操作することはできません");
-            }
         }
 
         if (Input.GetMouseButtonUp(0)) {
@@ -41,21 +37,18 @@ public class MinoCatcher : MonoBehaviour {
     void RayCheck() {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
-            search = SearchSelectedMino();
             if (target.CompareTag("Mino") || target.CompareTag("BottomMino")) {
-                if (search) {
+                if (SearchSelectedMino()) {
+                    Debug.Log("一度移動させたミノ以外を操作することはできません");
                     beRay = false;
                 }
-                else if (!search) {
-                    beRay = true;
+                else if (!SearchSelectedMino()) {
                     target.tag = "SelectedMino";
+                    beRay = true;
                 }
             }
             else if (target.CompareTag("SelectedMino")) {
                 beRay = true;
-            }
-            else {
-                beRay = false;
             }
         }
         else {

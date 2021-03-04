@@ -11,7 +11,12 @@ public class JengaController : MonoBehaviour {
     public GameObject lMinoPrefab;
 
     [field: SerializeField, Range(4, 12)]
-    public int Layers { get; set; }
+    public int Layers {
+        get; set;
+    }
+    public GameObject SelectedMino {
+        get; set;
+    }
 
     List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
@@ -829,9 +834,7 @@ break;
         */
     }
 
-    GameObject fallingMino;
-
     private void OnDestroy() {
-
+        Debug.Log(SelectedMino.name);
     }
 }

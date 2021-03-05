@@ -38,16 +38,17 @@ public class MinoCatcher : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
             if (target.CompareTag("Mino") || target.CompareTag("BottomMino")) {
-                if (SearchSelectedMino()) {
+                if (GameObject.FindWithTag("SelectedMino") == null) {
+                    target.tag = "SelectedMino";
+                    target.GetComponent<Renderer>().material.color = Color.white;
+                    beRay = true;
+                }
+                else {
                     Debug.Log("一度移動させたミノ以外を操作することはできません");
                     beRay = false;
                 }
-                else if (!SearchSelectedMino()) {
-                    target.tag = "SelectedMino";
-                    beRay = true;
-                }
             }
-            else if (target.CompareTag("SelectedMino")) {
+            else if (target.CompareTag("SelectedMino") || target.CompareTag("StackedMino")) {
                 beRay = true;
             }
         }
@@ -72,27 +73,13 @@ public class MinoCatcher : MonoBehaviour {
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;
         Vector3 moveTo = Camera.main.ScreenToWorldPoint(mousePos);
-        if (target.transform.position.x < -6 || target.transform.position.x > 6 || target.transform.position.z < -6 || target.transform.position.z > 6) {
-            Destroy(target);
-            beRay = false;
+        if ((target.transform.position.x < -6 || target.transform.position.x > 6 || target.transform.position.z < -6 || target.transform.position.z > 6) || target.CompareTag("StackedMino")) {
+            target.tag = "StackedMino";
+            target.GetComponent<Rigidbody>().isKinematic = true;
+            target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
         }
-        target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
-    }
-
-    bool SearchSelectedMino() {
-        int layer = 1;
-        GameObject selectedMino;
-        while (true) {
-            for (int num = 1; num < 5; num++) {
-                selectedMino = GameObject.Find($"{layer}_{num}");
-                if (selectedMino == null) {
-                    return false;
-                }
-                else if (selectedMino.CompareTag("SelectedMino")) {
-                    return true;
-                }
-            }
-            layer++;
+        else {
+            target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
         }
     }
 }

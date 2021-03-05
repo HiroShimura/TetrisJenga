@@ -8,6 +8,18 @@ public class GameMaster : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        GameObject stackedMino = GameObject.FindWithTag("StackedMino");
+        if (stackedMino != null) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                stackedMino.GetComponent<Rigidbody>().isKinematic = false;
+                stackedMino.tag = "Mino";
+            }
+            else if (Input.GetKey(KeyCode.A)) {
+                stackedMino.transform.Rotate(0, -0.5f, 0);
+            }
+            else if (Input.GetKey(KeyCode.D)) {
+                stackedMino.transform.Rotate(0, 0.5f, 0);
+            }
+        }
     }
 }

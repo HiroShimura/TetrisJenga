@@ -13,13 +13,14 @@ public class MinoDetail : MonoBehaviour {
 
     Color color;
     private void OnMouseEnter() {
-        if (!(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
+        if ((GameObject.FindWithTag("SelectedMino") == null) && !(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
             color = GetComponent<Renderer>().material.color;
             GetComponent<Renderer>().material.color = Color.white;
         }
     }
+
     private void OnMouseExit() {
-        if (!(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
+        if ((GameObject.FindWithTag("SelectedMino") == null) && !(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
             GetComponent<Renderer>().material.color = color;
         }
     }

@@ -13,15 +13,19 @@ public class MinoDetail : MonoBehaviour {
 
     Color color;
     private void OnMouseEnter() {
-        if ((GameObject.FindWithTag("SelectedMino") == null) && !(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
-            color = GetComponent<Renderer>().material.color;
+        color = GetComponent<Renderer>().material.color;
+        if ((GameObject.FindWithTag("SelectedMino") == null || (GameObject.FindWithTag("StackedMino") != null)) && Cursor.visible == true) {
             GetComponent<Renderer>().material.color = Color.white;
         }
     }
 
     private void OnMouseExit() {
-        if ((GameObject.FindWithTag("SelectedMino") == null) && !(Input.GetMouseButton(1) || Input.GetMouseButton(2))) {
+        if ((GameObject.FindWithTag("SelectedMino") == null || (GameObject.FindWithTag("StackedMino") != null)) && Cursor.visible == true) {
             GetComponent<Renderer>().material.color = color;
+        }
+        else if (GetComponent<Renderer>().material.color == Color.white) {
+            GetComponent<Renderer>().material.color = color;
+
         }
     }
 }

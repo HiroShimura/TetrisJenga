@@ -38,7 +38,7 @@ public class MinoCatcher : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             target = hit.collider.gameObject;
             if (target.CompareTag("Mino") || target.CompareTag("BottomMino")) {
-                if (GameObject.FindWithTag("SelectedMino") == null) {
+                if (GameObject.FindWithTag("SelectedMino") == null && (GameObject.FindWithTag("StackedMino") == null)) {
                     target.tag = "SelectedMino";
                     target.GetComponent<Renderer>().material.color = Color.white;
                     beRay = true;

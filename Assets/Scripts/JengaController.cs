@@ -11,8 +11,12 @@ public class JengaController : MonoBehaviour {
     public GameObject lMinoPrefab;
 
     [field: SerializeField, Range(4, 12)]
-    public int Layers { get; set; }
-    public GameObject SelectedMino { get; set; }
+    public int Layers {
+        get; set;
+    }
+    public GameObject SelectedMino {
+        get; set;
+    }
 
     List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
@@ -92,30 +96,28 @@ break;
         // ▲ ○ △ △
         // ▲ ○ ○ △
         // ▲ ▲ ○ △
-        GameObject iMino;
-        GameObject lMino1;
-        GameObject sMino;
-        GameObject lMino2;
-        Vector3 position;
+        GameObject iMino = Instantiate(iMinoPrefab);
+        iMino.name = $"{layer}_1";
+        GameObject lMino1 = Instantiate(lMinoPrefab);
+        lMino1.name = $"{layer}_2";
+        GameObject sMino = Instantiate(sMinoPrefab);
+        sMino.name = $"{layer}_3";
+        GameObject lMino2 = Instantiate(lMinoPrefab);
+        lMino2.name = $"{layer}_4";
         switch (direction) {
             case 'N':
-                position = new Vector3(1.5f, high, 0);
-                iMino = Instantiate(iMinoPrefab, position, Quaternion.Euler(0, 90, 0));
-                iMino.name = $"{layer}_1";
-                position = new Vector3(-0.5f, high, -1);
-                lMino1 = Instantiate(lMinoPrefab, position, Quaternion.Euler(0, 180, 0));
-                lMino1.name = $"{layer}_2";
-                position = new Vector3(-0.5f, high, 0);
-                sMino = Instantiate(sMinoPrefab, position, Quaternion.Euler(0, 270, 0));
-                sMino.name = $"{layer}_3";
-                position = new Vector3(-0.5f, high, 1);
-                lMino2 = Instantiate(lMinoPrefab, position, Quaternion.Euler(0, 0, 0));
-                lMino2.name = $"{layer}_4";
+                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.Rotate(0, 90, 0);
+                lMino1.transform.position = new Vector3(-0.5f, high, -1);
+                lMino1.transform.Rotate(0, 180, 0);
+                sMino.transform.position = new Vector3(-0.5f, high, 0);
+                sMino.transform.Rotate(0, 270, 0);
+                lMino2.transform.position = new Vector3(-0.5f, high, 1);
+                lMino2.transform.Rotate(0, 0, 0);
                 break;
             case 'E':
-                position = new Vector3(0, high, -1.5f);
-                iMino = Instantiate(iMinoPrefab, position, Quaternion.Euler(0, 0, 0));
-                iMino.name = $"{layer}_1";
+                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.Rotate(0, 0, 0);
                 lMino1.transform.position = new Vector3(-1, high, 0.5f);
                 lMino1.transform.Rotate(0, 270, 0);
                 sMino.transform.position = new Vector3(0, high, 0.5f);

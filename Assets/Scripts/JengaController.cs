@@ -23,6 +23,7 @@ public class JengaController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         int random = Random.Range(0, 4);
+        Layers = PlayerPrefs.GetInt("Layer", 8);
         for (int i = 1; i < Layers + 1; i++) {
             float high = (i - 0.5f) * 1.01f;
             int type = 1;// Random.Range(1, 11);

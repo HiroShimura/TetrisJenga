@@ -1,18 +1,13 @@
 ﻿using UnityEngine;
 
 public class MinoCatcher : MonoBehaviour {
+
     Ray ray;
     RaycastHit hit;
     bool beRay = false;
     GameObject target;
     Vector3 targetPos;
     Vector3 offset;
-
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
 
     // Update is called once per frame
     void Update() {
@@ -58,14 +53,13 @@ public class MinoCatcher : MonoBehaviour {
     }
 
     void PositionCheck() {
-        if (target != null) {
-            Vector3 mousePos = Input.mousePosition;
-            float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
-            mousePos.z = depth;
-            targetPos = target.transform.position;
-            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            offset = targetPos - worldMousePos;
-        }
+        if (target == null) return;
+        Vector3 mousePos = Input.mousePosition;
+        float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
+        mousePos.z = depth;
+        targetPos = target.transform.position;
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        offset = targetPos - worldMousePos;
     }
 
     void MovePosition() {
@@ -73,7 +67,11 @@ public class MinoCatcher : MonoBehaviour {
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;
         Vector3 moveTo = Camera.main.ScreenToWorldPoint(mousePos);
-        if ((target.transform.position.x < -6 || target.transform.position.x > 6 || target.transform.position.z < -6 || target.transform.position.z > 6) || target.CompareTag("StackedMino")) {
+        if (target.transform.position.x < -6
+            || target.transform.position.x > 6
+            || target.transform.position.z < -6
+            || target.transform.position.z > 6
+            || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
             target.GetComponent<Rigidbody>().isKinematic = true;
             target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));

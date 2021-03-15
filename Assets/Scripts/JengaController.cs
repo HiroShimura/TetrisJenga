@@ -2,6 +2,7 @@
 using UnityEngine;
 
 public class JengaController : MonoBehaviour {
+
     public GameObject tMinoPrefab;
     public GameObject iMinoPrefab;
     public GameObject oMinoPrefab;
@@ -85,11 +86,6 @@ break;
                 random = Random.Range(0, 4);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 
     void Type1(char direction, float high, int layer) {

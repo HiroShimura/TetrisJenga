@@ -5,6 +5,7 @@
 /// </summary>
 [RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
+
     [SerializeField, Range(0.1f, 10f)]
     private float wheelSpeed = 1f;
 
@@ -15,10 +16,6 @@ public class CameraController : MonoBehaviour {
     private float rotateSpeed = 0.3f;
 
     private Vector3 preMousePos;
-
-    void Start() {
-
-    }
 
     void Update() {
         MouseUpdate();

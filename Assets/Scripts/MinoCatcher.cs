@@ -67,10 +67,10 @@ public class MinoCatcher : MonoBehaviour {
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;
         Vector3 moveTo = Camera.main.ScreenToWorldPoint(mousePos);
-        if (target.transform.position.x < -6
-            || target.transform.position.x > 6
-            || target.transform.position.z < -6
-            || target.transform.position.z > 6
+        if (target.transform.position.x < -4
+            || target.transform.position.x > 4
+            || target.transform.position.z < -4
+            || target.transform.position.z > 4
             || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
             target.GetComponent<Rigidbody>().isKinematic = true;

@@ -18,9 +18,20 @@ public class MinoCatcher : MonoBehaviour {
         }
 
         if (beRay) MovePosition();
-        else if (!beRay) target = null;
 
         if (Input.GetMouseButtonUp(0)) beRay = false;
+
+        GameObject stackedMino = GameObject.FindWithTag("StackedMino");
+        if (stackedMino == null) return;
+
+        else if (Input.GetKeyDown(KeyCode.Space)) {
+            stackedMino.GetComponent<Rigidbody>().isKinematic = false;
+            stackedMino.tag = "Mino";
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) stackedMino.transform.Rotate(-0.5f, 0, 0);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -0.5f, 0);
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) stackedMino.transform.Rotate(0.5f, 0, 0);
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 0.5f, 0);
     }
 
     void RayCheck() {
@@ -42,7 +53,9 @@ public class MinoCatcher : MonoBehaviour {
             }
         }
         else {
+            target = null;
             beRay = false;
+            Debug.Log("ミノを選択してください");
         }
     }
 

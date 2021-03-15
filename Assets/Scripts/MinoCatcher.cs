@@ -17,16 +17,10 @@ public class MinoCatcher : MonoBehaviour {
             PositionCheck();
         }
 
-        if (beRay) {
-            MovePosition();
-        }
-        else if (!beRay) {
-            target = null;
-        }
+        if (beRay) MovePosition();
+        else if (!beRay) target = null;
 
-        if (Input.GetMouseButtonUp(0)) {
-            beRay = false;
-        }
+        if (Input.GetMouseButtonUp(0)) beRay = false;
     }
 
     void RayCheck() {
@@ -54,6 +48,7 @@ public class MinoCatcher : MonoBehaviour {
 
     void PositionCheck() {
         if (target == null) return;
+
         Vector3 mousePos = Input.mousePosition;
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;

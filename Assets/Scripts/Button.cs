@@ -3,19 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour {
 
-    public void StartButton() {
-        SceneManager.LoadScene("GameScene");
-    }
+    public void StartButton() => SceneManager.LoadScene("GameScene");
 
-    public void OptionButton() {
-        SceneManager.LoadScene("OptionScene");
-    }
+    public void OptionButton() => SceneManager.LoadScene("OptionScene");
 
-    public void TitleBackButton() {
-        SceneManager.LoadScene("TitleScene");
-    }
+    public void TitleBackButton() => SceneManager.LoadScene("TitleScene");
 
-    public void ExitButton() {
-        Application.Quit();
-    }
+    public void ExitButton() => Application.Quit();
 }

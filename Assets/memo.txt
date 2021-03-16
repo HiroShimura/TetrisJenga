@@ -7,3 +7,5 @@
 ・ミノがy < -50（仮）になるか、タグ"Mino"のオブジェクトがTableに触れたらGameOver（掴んでいる間は"BottomMino"になるようにMinoCatcherをコーディング済み）
 ・GameOverになったら下のミノからRigidbodyを無効化&灰色マテリアルを適用（できれば下方向からのグラデーション付き）でTETRIS99のようなアニメーションを再現可能か...？
 ・GameOverの時点でCameraControllerやMinoCatcherを無効化するのを忘れずに
+
+・think dog

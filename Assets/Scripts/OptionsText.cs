@@ -1,6 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/*
+class Options {
+    static Options option;
+    public float Layers { get; set; } = GameObject.Find($"LayerSlider").GetComponent<Slider>().value;
+    public float Time { get; set; } = GameObject.Find($"TimeSlider").GetComponent<Slider>().value;
+    Options() {
+    }
+    public static Options Option() {
+        if (option == null) {
+            option = new Options();
+        }
+        return option;
+    }
+}
+*/
 public class OptionsText : MonoBehaviour {
 
     GameObject slider;
@@ -8,6 +23,8 @@ public class OptionsText : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        // float layers = Options.Option().Layers;
+        // float time = Options.Option().Time;
         slider = GameObject.Find($"{name}Slider");
         text = GetComponent<Text>().text;
         slider.GetComponent<Slider>().value = PlayerPrefs.GetInt(name);

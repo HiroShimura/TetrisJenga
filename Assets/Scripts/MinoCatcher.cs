@@ -82,7 +82,6 @@ public class MinoCatcher : MonoBehaviour {
             || target.transform.position.z > 4
             || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
-            target.GetComponent<Rigidbody>().isKinematic = true;
             target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
         }
         else {

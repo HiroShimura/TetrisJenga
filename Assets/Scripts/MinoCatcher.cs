@@ -8,7 +8,6 @@ public class MinoCatcher : MonoBehaviour {
     GameObject target;
     Vector3 targetPos;
     Vector3 offset;
-    JengaController layers;
 
     // Update is called once per frame
     void Update() {

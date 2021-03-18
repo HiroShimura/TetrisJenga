@@ -8,6 +8,7 @@ public class MinoCatcher : MonoBehaviour {
     GameObject target;
     Vector3 targetPos;
     Vector3 offset;
+    JengaController layers;
 
     // Update is called once per frame
     void Update() {
@@ -28,10 +29,10 @@ public class MinoCatcher : MonoBehaviour {
             stackedMino.GetComponent<Rigidbody>().isKinematic = false;
             stackedMino.tag = "Mino";
         }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) stackedMino.transform.Rotate(-0.5f, 0, 0);
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -0.5f, 0);
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) stackedMino.transform.Rotate(0.5f, 0, 0);
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 0.5f, 0);
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) stackedMino.transform.Rotate(0, 0, 45);
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -45, 0);
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) stackedMino.transform.Rotate(0, 0, -45);
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 45, 0);
     }
 
     void RayCheck() {
@@ -41,6 +42,7 @@ public class MinoCatcher : MonoBehaviour {
                 if (GameObject.FindWithTag("SelectedMino") == null && (GameObject.FindWithTag("StackedMino") == null)) {
                     target.tag = "SelectedMino";
                     target.GetComponent<Renderer>().material.color = Color.white;
+                    target.GetComponent<Rigidbody>().isKinematic = true;
                     beRay = true;
                 }
                 else {

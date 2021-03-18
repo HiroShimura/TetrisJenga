@@ -27,7 +27,7 @@ public class JengaController : MonoBehaviour {
         Layers = PlayerPrefs.GetInt("Layer", 8);
         for (int i = 1; i < Layers + 1; i++) {
             float high = (i - 0.5f) * 1.01f;
-            int type = 1;// Random.Range(1, 11);
+            int type = Random.Range(1, 11);
             switch (type) {
                 case 1:
                     Type1(direction[random], high, i);

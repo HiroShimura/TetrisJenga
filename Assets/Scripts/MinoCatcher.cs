@@ -28,10 +28,10 @@ public class MinoCatcher : MonoBehaviour {
             stackedMino.GetComponent<Rigidbody>().isKinematic = false;
             stackedMino.tag = "Mino";
         }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) stackedMino.transform.Rotate(0, 0, 45);
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -45, 0);
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) stackedMino.transform.Rotate(0, 0, -45);
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 45, 0);
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) stackedMino.transform.Rotate(0, 0, 1);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -1, 0);
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) stackedMino.transform.Rotate(0, 0, -1);
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 1, 0);
     }
 
     void RayCheck() {

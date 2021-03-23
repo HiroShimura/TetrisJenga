@@ -1,30 +1,31 @@
 ﻿using UnityEngine;
 
 public class TimeOver : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
-        /*
+
+    void Awake() {
+        if (gameObject.activeSelf) {
+            gameObject.SetActive(false);
+        }
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.V)) {
+            gameObject.SetActive(true);
+        }
+    }
+
+    void OnEnable() {
+        Debug.Log("有効になりました。");
         GameObject vanishedMino;
-        int high;
-        //
-        // ここで現在のジェンガの高さを調べられるようにする。
-        // (カメラ用のスクリプトでも使うはずなので移植でおｋ)
-        //
         while (true) {
+            int high = PlayerPrefs.GetInt("Layer", 8) + 1;
             int layer = Random.Range(1, high);
             int num = Random.Range(1, 5);
             vanishedMino = GameObject.Find($"{layer}_{num}");
-            if (vanishedMino == null) {
-                continue;
-            }
-            break;
+            if (vanishedMino == null) continue;
+            else break;
         }
         Destroy(vanishedMino);
-        */
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        gameObject.SetActive(false);
     }
 }

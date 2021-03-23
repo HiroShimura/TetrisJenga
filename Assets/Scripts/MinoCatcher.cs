@@ -21,17 +21,15 @@ public class MinoCatcher : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0)) beRay = false;
 
-        GameObject stackedMino = GameObject.FindWithTag("StackedMino");
-        if (stackedMino == null) return;
-
+        if (GameObject.FindGameObjectWithTag("StackedMino") == null) return;
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            stackedMino.GetComponent<Rigidbody>().isKinematic = false;
-            stackedMino.tag = "Mino";
+            target.GetComponent<Rigidbody>().isKinematic = false;
+            target.tag = "Mino";
         }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) stackedMino.transform.Rotate(0, 0, 1);
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) stackedMino.transform.Rotate(0, -1, 0);
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) stackedMino.transform.Rotate(0, 0, -1);
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) stackedMino.transform.Rotate(0, 1, 0);
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) target.transform.Rotate(0, 0, 1);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) target.transform.Rotate(0, -1, 0);
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) target.transform.Rotate(0, 0, -1);
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) target.transform.Rotate(0, 1, 0);
     }
 
     void RayCheck() {

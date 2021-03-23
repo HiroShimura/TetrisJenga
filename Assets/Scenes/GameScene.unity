@@ -361,11 +361,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2065440883}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -250}
+  m_AnchoredPosition: {x: 400, y: -270}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &269342242
@@ -592,8 +592,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 43155944}
+  - {fileID: 855030528}
+  - {fileID: 1433729846}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -718,16 +720,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855030527}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -225}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.080046766, y: -0.7025614, z: 0.080046766, w: 0.7025614}
+  m_LocalPosition: {x: 0, y: 0, z: 1154.1388}
+  m_LocalScale: {x: 3.4467814, y: 3.4467812, z: 3.4467812}
   m_Children: []
-  m_Father: {fileID: 2065440883}
+  m_Father: {fileID: 750507152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 775.5257, y: 1375.1238}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855030529
@@ -909,9 +911,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433729845}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.080046766, y: -0.7025614, z: 0.080046766, w: 0.7025614}
+  m_LocalPosition: {x: 0, y: 0, z: 1154.1388}
+  m_LocalScale: {x: 3.4467814, y: 3.4467812, z: 3.4467812}
   m_Children:
   - {fileID: 1847220623}
   - {fileID: 2035783834}
@@ -920,12 +922,12 @@ RectTransform:
   - {fileID: 1891333475}
   - {fileID: 2034597960}
   - {fileID: 760723330}
-  m_Father: {fileID: 2065440883}
-  m_RootOrder: 0
+  m_Father: {fileID: 750507152}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 34.46781, y: 1375.1238}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1433729847
@@ -1004,7 +1006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847220622
 GameObject:
@@ -1280,12 +1282,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2065440883}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 200}
-  m_SizeDelta: {x: 320, y: 170}
+  m_AnchoredPosition: {x: 420, y: 200}
+  m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030821488
 MonoBehaviour:
@@ -1308,10 +1310,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1320,7 +1322,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5DE6\u30AF\u30EA\u30C3\u30AF: \u30DF\u30CE\u3092\u63B4\u3080\n\u53F3\u30AF\u30EA\u30C3\u30AF:
-    \u56DE\u8EE2\n\u30DB\u30A4\u30FC\u30EB: \u62E1\u5927 / \u7E2E\u5C0F\n\u30DB\u30A4\u30FC\u30EB\u30AF\u30EA\u30C3\u30AF:
+    \u8996\u70B9\u306E\u56DE\u8EE2\n\u30DB\u30A4\u30FC\u30EB: \u62E1\u5927 / \u7E2E\u5C0F\n\u30DB\u30A4\u30FC\u30EB\u30AF\u30EA\u30C3\u30AF:
     \u8996\u70B9\u306E\u4E0A\u4E0B\u5DE6\u53F3\u79FB\u52D5\nW, A, S, D: \u30DF\u30CE\u3092\u56DE\u8EE2\nSpace:
     \u30DF\u30CE\u3092\u843D\u4E0B\u3055\u305B\u308B"
 --- !u!222 &2030821489
@@ -1713,8 +1715,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1433729846}
-  - {fileID: 855030528}
   - {fileID: 2030821487}
   - {fileID: 269342241}
   m_Father: {fileID: 0}

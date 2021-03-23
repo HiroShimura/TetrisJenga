@@ -127,6 +127,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_D9208A88: 0.5
+    - Vector1_F3BBC14B: 0.7
     - _AlphaClip: 0
     - _BASE_COLOR_WEIGHT: 1
     - _BUMP_MAP_STRENGTH: 0.3

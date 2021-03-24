@@ -9,10 +9,12 @@ public class MinoCatcher : MonoBehaviour {
     Rigidbody targetRigidbody;
     Vector3 targetPos;
     Vector3 offset;
+    [SerializeField] GameObject afterSelectMinoText;
 
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
+            afterSelectMinoText.SetActive(false);
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RayCheck();
             PositionCheck();
@@ -45,7 +47,7 @@ public class MinoCatcher : MonoBehaviour {
                     beRay = true;
                 }
                 else {
-                    Debug.Log("一度移動させたミノ以外を操作することはできません");
+                    afterSelectMinoText.SetActive(true);
                     beRay = false;
                 }
             }

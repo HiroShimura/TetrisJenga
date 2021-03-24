@@ -4,6 +4,7 @@ public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject MinoController;
 
     void Awake() {
         if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
@@ -11,8 +12,14 @@ public class GameController : MonoBehaviour {
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (pausePanel.activeSelf) pausePanel.SetActive(false);
-            else pausePanel.SetActive(true);
+            if (!pausePanel.activeSelf) {
+                MinoController.SetActive(false);
+                pausePanel.SetActive(true);
+            }
+            else {
+                pausePanel.SetActive(false);
+                MinoController.SetActive(true);
+            }
         }
     }
 
@@ -22,7 +29,7 @@ public class GameController : MonoBehaviour {
                 GameObject.Find($"{layer}_{num}").GetComponent<Rigidbody>().isKinematic = true;
             }
         }
-        GameObject.Find("MinoController").SetActive(false);
+        MinoController.SetActive(false);
         gameOverPanel.SetActive(true);
     }
 }

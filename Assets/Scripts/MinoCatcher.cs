@@ -56,9 +56,7 @@ public class MinoCatcher : MonoBehaviour {
             }
         }
         else {
-            target = null;
             beRay = false;
-            Debug.Log("ミノを選択してください");
         }
     }
 

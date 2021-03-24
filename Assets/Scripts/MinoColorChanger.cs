@@ -6,7 +6,7 @@ public class MinoColorChanger : MonoBehaviour {
 
     void OnMouseEnter() {
         color = GetComponent<Renderer>().material.color;
-        if ((GameObject.FindWithTag("SelectedMino") == null || GameObject.FindWithTag("StackedMino") == null) && Cursor.visible == true) {
+        if (Cursor.visible == true) {
             GetComponent<Renderer>().material.color = Color.white;
         }
     }

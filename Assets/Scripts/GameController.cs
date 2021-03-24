@@ -9,6 +9,13 @@ public class GameController : MonoBehaviour {
         if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (pausePanel.activeSelf) pausePanel.SetActive(false);
+            else pausePanel.SetActive(true);
+        }
+    }
+
     public void GameOver() {
         for (int layer = 1; layer < PlayerPrefs.GetInt("Layer", 8) + 1; layer++) {
             for (int num = 1; num < 5; num++) {

@@ -6,6 +6,7 @@ public class MinoCatcher : MonoBehaviour {
     RaycastHit hit;
     bool beRay = false;
     GameObject target;
+    Rigidbody targetRigidbody;
     Vector3 targetPos;
     Vector3 offset;
 
@@ -23,7 +24,7 @@ public class MinoCatcher : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("StackedMino") == null) return;
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            target.GetComponent<Rigidbody>().isKinematic = false;
+            targetRigidbody.isKinematic = false;
             target.tag = "Mino";
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) target.transform.Rotate(0, 0, 1);
@@ -39,7 +40,8 @@ public class MinoCatcher : MonoBehaviour {
                 if (GameObject.FindWithTag("SelectedMino") == null && (GameObject.FindWithTag("StackedMino") == null)) {
                     target.tag = "SelectedMino";
                     target.GetComponent<Renderer>().material.color = Color.white;
-                    target.GetComponent<Rigidbody>().isKinematic = true;
+                    targetRigidbody = target.GetComponent<Rigidbody>();
+                    targetRigidbody.isKinematic = true;
                     beRay = true;
                 }
                 else {
@@ -80,10 +82,10 @@ public class MinoCatcher : MonoBehaviour {
             || target.transform.position.z > 4
             || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
-            target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
+            targetRigidbody.MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
         }
         else {
-            target.GetComponent<Rigidbody>().MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
+            targetRigidbody.MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
         }
     }
 }

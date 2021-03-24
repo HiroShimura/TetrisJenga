@@ -3,6 +3,11 @@
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject pausePanel;
+
+    void Awake() {
+        if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
+    }
 
     public void GameOver() {
         for (int layer = 1; layer < PlayerPrefs.GetInt("Layer", 8) + 1; layer++) {
@@ -11,7 +16,6 @@ public class GameController : MonoBehaviour {
             }
         }
         GameObject.Find("MinoController").SetActive(false);
-        Debug.Log("ゲームオーバー");
         gameOverPanel.SetActive(true);
     }
 }

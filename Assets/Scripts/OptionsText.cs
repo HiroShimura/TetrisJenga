@@ -12,7 +12,7 @@ public class OptionsText : MonoBehaviour {
         text = GetComponent<Text>().text;
         slider.GetComponent<Slider>().value = PlayerPrefs.GetInt(name);
         if (name == "Time") {
-            GetComponent<Text>().text = $"{text}{slider.GetComponent<Slider>().value}秒";
+            GetComponent<Text>().text = $"{text}{slider.GetComponent<Slider>().value}sec";
         }
         else {
             GetComponent<Text>().text = $"{text}{slider.GetComponent<Slider>().value}";
@@ -22,7 +22,7 @@ public class OptionsText : MonoBehaviour {
     public void ValueChanged() {
         if (name == "Time") {
             // time = GetComponent<Slider>().value;
-            GetComponent<Text>().text = $"{text}{slider.GetComponent<Slider>().value}秒";
+            GetComponent<Text>().text = $"{text}{slider.GetComponent<Slider>().value}sec";
             PlayerPrefs.SetInt("Time", (int)slider.GetComponent<Slider>().value);
         }
         else {

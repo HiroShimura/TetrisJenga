@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour {
     void Awake() {
         if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
         if (pausePanel.activeSelf) pausePanel.SetActive(false);
+        StartCoroutine(TimeManage());
     }
 
     void Update() {
@@ -22,6 +24,11 @@ public class GameController : MonoBehaviour {
                 MinoController.SetActive(true);
             }
         }
+    }
+
+    IEnumerator TimeManage() {
+        Debug.Log("プレイヤー1のターンです");
+        yield return new WaitForSeconds(3);
     }
 
     void TimeOver() {

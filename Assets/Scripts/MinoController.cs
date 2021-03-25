@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class MinoCatcher : MonoBehaviour {
+public class MinoController : MonoBehaviour {
 
     Ray ray;
     RaycastHit hit;
     bool beRay = false;
     GameObject target;
-    Rigidbody targetRigidbody;
+    Rigidbody targetRbCache;
     Vector3 targetPos;
     Vector3 offset;
     [SerializeField] GameObject afterSelectMinoText;
@@ -26,7 +26,7 @@ public class MinoCatcher : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("StackedMino") == null) return;
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            targetRigidbody.isKinematic = false;
+            targetRbCache.isKinematic = false;
             target.tag = "Mino";
         }
         else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) target.transform.Rotate(0, 0, 1);
@@ -42,8 +42,8 @@ public class MinoCatcher : MonoBehaviour {
                 if (GameObject.FindWithTag("SelectedMino") == null && (GameObject.FindWithTag("StackedMino") == null)) {
                     target.tag = "SelectedMino";
                     target.GetComponent<Renderer>().material.color = Color.white;
-                    targetRigidbody = target.GetComponent<Rigidbody>();
-                    targetRigidbody.isKinematic = true;
+                    targetRbCache = target.GetComponent<Rigidbody>();
+                    targetRbCache.isKinematic = true;
                     beRay = true;
                 }
                 else {
@@ -82,10 +82,10 @@ public class MinoCatcher : MonoBehaviour {
             || target.transform.position.z > 4
             || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
-            targetRigidbody.MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
+            targetRbCache.MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));
         }
         else {
-            targetRigidbody.MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
+            targetRbCache.MovePosition(new Vector3(moveTo.x + offset.x, targetPos.y, moveTo.z + offset.z));
         }
     }
 }

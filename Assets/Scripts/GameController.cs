@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 
     void Awake() {
         if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
+        if (pausePanel.activeSelf) pausePanel.SetActive(false);
     }
 
     void Update() {
@@ -21,6 +22,19 @@ public class GameController : MonoBehaviour {
                 MinoController.SetActive(true);
             }
         }
+    }
+
+    void TimeOver() {
+        GameObject vanishedMino;
+        while (true) {
+            int high = PlayerPrefs.GetInt("Layer", 8) + 1;
+            int layer = Random.Range(1, high);
+            int num = Random.Range(1, 5);
+            vanishedMino = GameObject.Find($"{layer}_{num}");
+            if (vanishedMino == null) continue;
+            else break;
+        }
+        Destroy(vanishedMino);
     }
 
     public void GameOver() {

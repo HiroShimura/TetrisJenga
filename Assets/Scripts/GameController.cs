@@ -8,8 +8,10 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject timeCoroutines;
 
     void Awake() {
-        if (gameOverPanel.activeSelf) gameOverPanel.SetActive(false);
-        if (pausePanel.activeSelf) pausePanel.SetActive(false);
+        if (gameOverPanel.activeSelf)
+            gameOverPanel.SetActive(false);
+        if (pausePanel.activeSelf)
+            pausePanel.SetActive(false);
     }
 
     void Update() {
@@ -29,7 +31,8 @@ public class GameController : MonoBehaviour {
         for (int layer = 1; layer < PlayerPrefs.GetInt("Layer", 8) + 1; layer++) {
             for (int num = 1; num < 5; num++) {
                 var mino = GameObject.Find($"{layer}_{num}");
-                if (mino == null) continue;
+                if (mino == null)
+                    continue;
                 mino.GetComponent<Rigidbody>().isKinematic = true;
             }
         }

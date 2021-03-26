@@ -20,19 +20,26 @@ public class MinoController : MonoBehaviour {
             PositionCheck();
         }
 
-        if (beRay) MovePosition();
+        if (beRay)
+            MovePosition();
 
-        if (Input.GetMouseButtonUp(0)) beRay = false;
+        if (Input.GetMouseButtonUp(0))
+            beRay = false;
 
-        if (GameObject.FindGameObjectWithTag("StackedMino") == null) return;
+        if (GameObject.FindWithTag("StackedMino") == null)
+            return;
         else if (Input.GetKeyDown(KeyCode.Space)) {
             targetRbCache.isKinematic = false;
             target.tag = "Mino";
         }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) target.transform.Rotate(0, 0, 1);
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) target.transform.Rotate(0, -1, 0);
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) target.transform.Rotate(0, 0, -1);
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) target.transform.Rotate(0, 1, 0);
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            target.transform.Rotate(0, 0, 1);
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            target.transform.Rotate(0, -1, 0);
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            target.transform.Rotate(0, 0, -1);
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            target.transform.Rotate(0, 1, 0);
     }
 
     void RayCheck() {
@@ -61,7 +68,8 @@ public class MinoController : MonoBehaviour {
     }
 
     void PositionCheck() {
-        if (target == null) return;
+        if (target == null)
+            return;
 
         Vector3 mousePos = Input.mousePosition;
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;

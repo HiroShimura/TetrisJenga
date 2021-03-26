@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minoController: {fileID: 126807367}
+  gameOverPanel: {fileID: 642899703}
   Time: {fileID: 3812123}
 --- !u!1 &642899703
 GameObject:

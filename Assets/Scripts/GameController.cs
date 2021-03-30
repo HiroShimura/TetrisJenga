@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -8,18 +9,25 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject minoController;
     [SerializeField] GameObject timer;
     [SerializeField] GameObject timeCoroutines;
+    [SerializeField] GameObject countDown;
 
     TimeManager timeManager;
+    Text countDownText;
     string[] players; // Optionでプレイヤー名を編集できるようにする予定
 
     void Awake() {
+        timeManager = timer.GetComponent<TimeManager>();
+        countDownText = countDown.GetComponent<Text>();
+        countDownText.fontSize = 40;
         if (gameOverPanel.activeSelf)
             gameOverPanel.SetActive(false);
         if (pausePanel.activeSelf)
             pausePanel.SetActive(false);
-        timeManager = timer.GetComponent<TimeManager>();
         if (timeManager.enabled)
             timeManager.enabled = false;
+        if (!countDown.activeSelf) {
+            countDown.SetActive(true);
+        }
         Time.timeScale = 1;
         StartCoroutine(GameStartCoroutine());
     }
@@ -40,19 +48,23 @@ public class GameController : MonoBehaviour {
     }
 
     IEnumerator GameStartCoroutine() {
-        Debug.Log("Player 1's turn...");
+        countDownText.text = "Player 1's turn...";
+        yield return new WaitForSeconds(3);
+        countDownText.fontSize = 65;
+        countDownText.text = "5";
         yield return new WaitForSeconds(1);
-        Debug.Log("5");
+        countDownText.text = "4";
         yield return new WaitForSeconds(1);
-        Debug.Log("4");
+        countDownText.text = "3";
         yield return new WaitForSeconds(1);
-        Debug.Log("3");
+        countDownText.text = "2";
         yield return new WaitForSeconds(1);
-        Debug.Log("2");
+        countDownText.text = "1";
         yield return new WaitForSeconds(1);
-        Debug.Log("1");
+        countDownText.fontSize = 50;
+        countDownText.text = "Start.";
         yield return new WaitForSeconds(1);
-        Debug.Log("Start.");
+        countDown.SetActive(false);
         minoController.SetActive(true);
         timeManager.enabled = true;
     }

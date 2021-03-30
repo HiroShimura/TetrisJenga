@@ -27,6 +27,7 @@ public class TimeCoroutines : MonoBehaviour {
     }
 
     IEnumerator ToNextTurnCoroutin() {
+        Debug.Log("good job.");
         yield return new WaitForSeconds(5);
         Debug.Log("next");
         timer.CountTime = PlayerPrefs.GetInt("Time");

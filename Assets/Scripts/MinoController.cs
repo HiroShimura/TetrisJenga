@@ -80,6 +80,9 @@ public class MinoController : MonoBehaviour {
     }
 
     void MovePosition() {
+        if (target == null)
+            return;
+
         Vector3 mousePos = Input.mousePosition;
         float depth = Camera.main.transform.InverseTransformPoint(hit.point).z;
         mousePos.z = depth;

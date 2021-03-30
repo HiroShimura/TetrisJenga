@@ -26,7 +26,7 @@ public class TimeManager : MonoBehaviour {
             GetComponent<Text>().text = text + 0.ToString("F2");
         }
         else if (CountTime > 0) {
-            if (GameObject.FindWithTag("StackedMino") != null && Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.Space) && GameObject.FindWithTag("StackedMino") != null) {
                 timeCoroutines.SetActive(true);
             }
             else {

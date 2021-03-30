@@ -39,7 +39,7 @@ public class TimeCoroutines : MonoBehaviour {
             StopAllCoroutines();
         }
         yield return new WaitForSeconds(2);
-        Debug.Log("Randomly selected Minos will be erased.");
+        Debug.Log("Randomly selected Minos will be erased, and selected Mino drop.");
         yield return new WaitForSeconds(3);
         GameObject vanishedMino;
         while (true) {
@@ -53,6 +53,7 @@ public class TimeCoroutines : MonoBehaviour {
                 break;
         }
         Destroy(vanishedMino);
+        GameObject.FindWithTag("StackedMino").GetComponent<Rigidbody>().isKinematic = false;
         Debug.Log("After 3 sec, will be next player's turn.");
         yield return new WaitForSeconds(3);
         timer.CountTime = PlayerPrefs.GetInt("Time");

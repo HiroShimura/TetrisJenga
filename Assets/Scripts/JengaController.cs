@@ -21,8 +21,7 @@ public class JengaController : MonoBehaviour {
 
     List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         int random = Random.Range(0, 4);
         Layers = PlayerPrefs.GetInt("Layer", 8);
         for (int i = 1; i < Layers + 1; i++) {

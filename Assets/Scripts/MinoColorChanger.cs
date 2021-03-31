@@ -6,7 +6,7 @@ public class MinoColorChanger : MonoBehaviour {
 
     void OnMouseEnter() {
         color = GetComponent<Renderer>().material.color;
-        if (Cursor.visible == true) {
+        if (Cursor.visible == true && Time.timeScale == 1) {
             GetComponent<Renderer>().material.color = Color.white;
         }
     }

@@ -40,7 +40,8 @@ public class TimeCoroutines : MonoBehaviour {
         countDownUI.SetActive(true);
         yield return new WaitForSeconds(1);
         countDownText.fontSize = 40;
-        countDownText.text = $"{_gameController.Order[_gameController.Turn + 1]}'s turn...";
+        if (_gameController.Turn + 1 == _gameController.Order.Count()) countDownText.text = $"{_gameController.Order[0]}'s turn...";
+        else countDownText.text = $"{_gameController.Order[_gameController.Turn + 1]}'s turn...";
         yield return new WaitForSeconds(2);
         countDownText.fontSize = 50;
         countDownText.text = "Start";

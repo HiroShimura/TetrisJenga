@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour {
     public string[] Order { get; set; }
 
     void Awake() {
+        players = new List<string>();
+        for (int i = 1; i < PlayerPrefs.GetInt("Player", 2) + 1; i++) players.Add("Player " + i);
         timeManager = timer.GetComponent<TimeManager>();
         countDownText = countDown.GetComponent<Text>();
         _loserText = loserText.GetComponent<Text>();

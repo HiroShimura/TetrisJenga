@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         text = GetComponent<Text>().text;
-        CountTime = PlayerPrefs.GetInt("Time");
+        CountTime = PlayerPrefs.GetInt("Time", 20);
     }
 
     // Update is called once per frame

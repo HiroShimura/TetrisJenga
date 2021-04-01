@@ -18,7 +18,6 @@ public class TimeCoroutines : MonoBehaviour {
         timer = Time.GetComponent<TimeManager>();
         _gameController = gameController.GetComponent<GameController>();
         countDownText = countDownUI.GetComponent<Text>();
-
     }
 
     void OnEnable() {
@@ -40,13 +39,13 @@ public class TimeCoroutines : MonoBehaviour {
         countDownText.text = "Next";
         countDownUI.SetActive(true);
         yield return new WaitForSeconds(1);
-        _gameController.Turn++;
-        if (_gameController.Turn >= _gameController.Order.Count()) _gameController.Turn = 0;
         countDownText.fontSize = 40;
-        countDownText.text = $"{_gameController.Order[_gameController.Turn]}'s turn...";
+        countDownText.text = $"{_gameController.Order[_gameController.Turn + 1]}'s turn...";
         yield return new WaitForSeconds(2);
         countDownText.fontSize = 50;
         countDownText.text = "Start";
+        _gameController.Turn++;
+        if (_gameController.Turn >= _gameController.Order.Count()) _gameController.Turn = 0;
         minoController.SetActive(true);
         yield return new WaitForSeconds(1);
         countDownUI.SetActive(false);

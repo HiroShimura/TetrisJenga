@@ -7,17 +7,21 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject gameOverPanel;
-    [SerializeField] GameObject loserText;
+    [SerializeField] GameObject loser;
+    [SerializeField] GameObject order;
+    [SerializeField] GameObject countDown;
+    [SerializeField] GameObject turn;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject minoController;
     [SerializeField] GameObject timer;
     [SerializeField] GameObject timeCoroutines;
-    [SerializeField] GameObject countDown;
-    [SerializeField] List<string> players; // Optionでプレイヤー名を編集できるようにする予定
+    List<string> players; // Optionでプレイヤー名を編集できるようにする予定
 
     TimeManager timeManager;
     Text countDownText;
-    Text _loserText;
+    Text loserText;
+    Text orderText;
+    Text turnText;
 
     public int Turn { get; set; }
     public string[] Order { get; set; }
@@ -26,8 +30,10 @@ public class GameController : MonoBehaviour {
         players = new List<string>();
         for (int i = 1; i < PlayerPrefs.GetInt("Player", 2) + 1; i++) players.Add("Player " + i);
         timeManager = timer.GetComponent<TimeManager>();
+        loserText = loser.GetComponent<Text>();
+        orderText = order.GetComponent<Text>();
+        turnText = turn.GetComponent<Text>();
         countDownText = countDown.GetComponent<Text>();
-        _loserText = loserText.GetComponent<Text>();
         countDownText.fontSize = 40;
         if (gameOverPanel.activeSelf)
             gameOverPanel.SetActive(false);
@@ -43,6 +49,7 @@ public class GameController : MonoBehaviour {
     }
 
     void Update() {
+        turnText.text = Order[Turn] + "'s turn";
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (!pausePanel.activeSelf) {
                 minoController.SetActive(false);
@@ -87,6 +94,8 @@ public class GameController : MonoBehaviour {
             index = Random.Range(0, players.Count());
             Order[num] = players[index];
             if (Order[num] == null) continue;
+            if (num == Order.Count() - 1) orderText.text += Order[num];
+            else orderText.text += Order[num] + " -> ";
             num++;
             players.RemoveAt(index);
             if (num == Order.Count()) break;
@@ -113,7 +122,7 @@ public class GameController : MonoBehaviour {
                 mino.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
-        _loserText.text = $"Loser: {Order[Turn]}";
+        loserText.text = $"Loser: {Order[Turn]}";
         minoController.SetActive(false);
         timeCoroutines.SetActive(false);
         gameOverPanel.SetActive(true);

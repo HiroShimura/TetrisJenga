@@ -6,11 +6,10 @@ public class TimeManager : MonoBehaviour {
     [SerializeField] GameObject timeCoroutines;
     [SerializeField] GameObject gameOverPanel;
     string text;
-    bool notNull = false;
 
-    public float CountTime {
-        get; set;
-    }
+    public float CountTime { get; set; }
+    public GameObject Sta { get; set; }
+    public bool NotNull { get; set; } = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,12 +26,9 @@ public class TimeManager : MonoBehaviour {
             GetComponent<Text>().text = text + 0.ToString("F2");
         }
         else if (CountTime > 0) {
-            if (notNull == true && Input.GetKeyDown(KeyCode.Space)) {
-                timeCoroutines.SetActive(true);
-            }
-            else if (GameObject.FindWithTag("StackedMino") != null) {
-                notNull = true;
-            }
+            Sta = GameObject.FindWithTag("StackedMino");
+            if (NotNull == true && Input.GetKeyDown(KeyCode.Space)) timeCoroutines.SetActive(true);
+            else if (Sta != null) NotNull = true;
             CountTime -= Time.deltaTime;
             GetComponent<Text>().text = text + CountTime.ToString("F2");
         }

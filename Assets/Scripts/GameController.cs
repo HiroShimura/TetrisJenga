@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject loserText;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject minoController;
     [SerializeField] GameObject timer;
@@ -16,20 +17,15 @@ public class GameController : MonoBehaviour {
 
     TimeManager timeManager;
     Text countDownText;
-    private int turn = 0;
+    Text _loserText;
 
-    public int Turn {
-        get => turn;
-        set {
-            if (turn > players.Count())
-                turn = 0;
-        }
-    }
+    public int Turn { get; set; }
     public string[] Order { get; set; }
 
     void Awake() {
         timeManager = timer.GetComponent<TimeManager>();
         countDownText = countDown.GetComponent<Text>();
+        _loserText = loserText.GetComponent<Text>();
         countDownText.fontSize = 40;
         if (gameOverPanel.activeSelf)
             gameOverPanel.SetActive(false);
@@ -82,12 +78,27 @@ public class GameController : MonoBehaviour {
     }
 
     void DecideOrder() {
+        int index;
+        int num = 0;
         Order = new string[players.Count()];
+        while (true) {
+            index = Random.Range(0, players.Count());
+            Order[num] = players[index];
+            if (Order[num] == null) continue;
+            num++;
+            players.RemoveAt(index);
+            if (num == Order.Count()) break;
+        }
+
+        // 下のfor文だとなぜかNullが(Listの要素数が3個 -> 1個、4個以上 -> 2個のNullがOrderに)入ってしまいました。
+        // なぜかはよくわかりません()
+        /*
         for (int i = 0; i < players.Count(); i++) {
-            int index = Random.Range(0, players.Count());
+            index = Random.Range(0, players.Count());
             Order[i] = players[index];
             players.RemoveAt(index);
         }
+        */
     }
 
     public void GameOver() {
@@ -100,6 +111,7 @@ public class GameController : MonoBehaviour {
                 mino.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
+        _loserText.text = $"Loser: {Order[Turn]}";
         minoController.SetActive(false);
         timeCoroutines.SetActive(false);
         gameOverPanel.SetActive(true);

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,21 +31,23 @@ public class TimeCoroutines : MonoBehaviour {
         }
     }
 
-    void OnDisable() {
-        Debug.Log("コルーチンが無効になりました");
-    }
-
     IEnumerator ToNextTurnCoroutin() {
+        timer.Sta = null;
+        timer.NotNull = false;
         yield return new WaitForSeconds(5);
-        _gameController.Turn++;
+        minoController.SetActive(false);
+        countDownText.fontSize = 50;
         countDownText.text = "Next";
         countDownUI.SetActive(true);
         yield return new WaitForSeconds(1);
+        _gameController.Turn++;
+        if (_gameController.Turn >= _gameController.Order.Count()) _gameController.Turn = 0;
         countDownText.fontSize = 40;
         countDownText.text = $"{_gameController.Order[_gameController.Turn]}'s turn...";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         countDownText.fontSize = 50;
         countDownText.text = "Start";
+        minoController.SetActive(true);
         yield return new WaitForSeconds(1);
         countDownUI.SetActive(false);
         timer.CountTime = PlayerPrefs.GetInt("Time");
@@ -52,12 +55,12 @@ public class TimeCoroutines : MonoBehaviour {
     }
 
     IEnumerator TimeOverCroutine() {
-        Debug.Log("Time Over");
-        if (gameOverPanel.activeSelf) {
-            StopAllCoroutines();
-        }
+        countDownUI.SetActive(true);
+        countDownText.text = "Time Over";
+        if (gameOverPanel.activeSelf) StopAllCoroutines();
         yield return new WaitForSeconds(2);
-        Debug.Log("Randomly selected Minos will be erased, and selected Mino drop.");
+        countDownText.fontSize = 30;
+        countDownText.text = "Randomly selected Minos will be erased, and selected Mino drop.";
         yield return new WaitForSeconds(3);
         GameObject vanishedMino;
         while (true) {
@@ -71,11 +74,21 @@ public class TimeCoroutines : MonoBehaviour {
                 break;
         }
         Destroy(vanishedMino);
-        GameObject.FindWithTag("StackedMino").GetComponent<Rigidbody>().isKinematic = false;
-        Debug.Log("After 5 sec, will be next player's turn.");
-        yield return new WaitForSeconds(3);
-        timer.CountTime = PlayerPrefs.GetInt("Time");
-        minoController.SetActive(true);
-        gameObject.SetActive(false);
+        var a = GameObject.FindWithTag("StackedMino");
+        var b = GameObject.FindWithTag("SelectedMino");
+        if (a) {
+            a.GetComponent<Rigidbody>().isKinematic = false;
+            a.tag = "Mino";
+        }
+        else if (b) {
+            b.GetComponent<Rigidbody>().isKinematic = false;
+            b.tag = "Mino";
+        }
+
+        countDownText.fontSize = 40;
+        countDownText.text = "After 5 sec, will be next player's turn.";
+        yield return new WaitForSeconds(2);
+        countDownUI.SetActive(false);
+        StartCoroutine(ToNextTurnCoroutin());
     }
 }

@@ -25,7 +25,7 @@ public class PlayerListManager : MonoBehaviour {
 
         // Contentの子要素にListViewItemを追加していく.
         foreach (string itemStr in player) {
-            GameObject item = GameObject.Instantiate(nameListItemPrefab) as GameObject; // ListViewItem のインスタンス作成.
+            GameObject item = Instantiate(nameListItemPrefab); // ListViewItem のインスタンス作成.
             Text itemText = item.GetComponentInChildren<Text>(); // Textコンポーネントを取得.
             itemText.text = itemStr;
 

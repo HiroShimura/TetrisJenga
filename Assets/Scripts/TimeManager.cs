@@ -6,6 +6,7 @@ public class TimeManager : MonoBehaviour {
     [SerializeField] GameObject timeCoroutines;
     [SerializeField] GameObject gameOverPanel;
     string text;
+    bool notNull = false;
 
     public float CountTime {
         get; set;
@@ -26,13 +27,14 @@ public class TimeManager : MonoBehaviour {
             GetComponent<Text>().text = text + 0.ToString("F2");
         }
         else if (CountTime > 0) {
-            if (GameObject.FindWithTag("StackedMino") != null && Input.GetKeyDown(KeyCode.Space)) {
+            if (notNull == true && Input.GetKeyDown(KeyCode.Space)) {
                 timeCoroutines.SetActive(true);
             }
-            else {
-                CountTime -= Time.deltaTime;
-                GetComponent<Text>().text = text + CountTime.ToString("F2");
+            else if (GameObject.FindWithTag("StackedMino") != null) {
+                notNull = true;
             }
+            CountTime -= Time.deltaTime;
+            GetComponent<Text>().text = text + CountTime.ToString("F2");
         }
     }
 }

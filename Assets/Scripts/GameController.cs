@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +12,20 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject timer;
     [SerializeField] GameObject timeCoroutines;
     [SerializeField] GameObject countDown;
+    [SerializeField] List<string> players; // Optionでプレイヤー名を編集できるようにする予定
 
     TimeManager timeManager;
     Text countDownText;
-    string[] players; // Optionでプレイヤー名を編集できるようにする予定
+    private int turn = 0;
+
+    public int Turn {
+        get => turn;
+        set {
+            if (turn > players.Count())
+                turn = 0;
+        }
+    }
+    public string[] Order { get; set; }
 
     void Awake() {
         timeManager = timer.GetComponent<TimeManager>();
@@ -25,9 +37,9 @@ public class GameController : MonoBehaviour {
             pausePanel.SetActive(false);
         if (timeManager.enabled)
             timeManager.enabled = false;
-        if (!countDown.activeSelf) {
+        if (!countDown.activeSelf)
             countDown.SetActive(true);
-        }
+        DecideOrder();
         Time.timeScale = 1;
         StartCoroutine(GameStartCoroutine());
     }
@@ -48,7 +60,7 @@ public class GameController : MonoBehaviour {
     }
 
     IEnumerator GameStartCoroutine() {
-        countDownText.text = "Player 1's turn...";
+        countDownText.text = $"{Order[Turn]}'s turn...";
         yield return new WaitForSeconds(3);
         countDownText.fontSize = 65;
         countDownText.text = "5";
@@ -62,11 +74,20 @@ public class GameController : MonoBehaviour {
         countDownText.text = "1";
         yield return new WaitForSeconds(1);
         countDownText.fontSize = 50;
-        countDownText.text = "Start.";
+        countDownText.text = "Start";
         yield return new WaitForSeconds(1);
         countDown.SetActive(false);
         minoController.SetActive(true);
         timeManager.enabled = true;
+    }
+
+    void DecideOrder() {
+        Order = new string[players.Count()];
+        for (int i = 0; i < players.Count(); i++) {
+            int index = Random.Range(0, players.Count());
+            Order[i] = players[index];
+            players.RemoveAt(index);
+        }
     }
 
     public void GameOver() {

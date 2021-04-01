@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeCoroutines : MonoBehaviour {
 
+    [SerializeField] GameObject gameController;
     [SerializeField] GameObject minoController;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject countDownUI;
     [SerializeField] GameObject Time;
+    GameController _gameController;
     TimeManager timer;
+    Text countDownText;
 
     void Awake() {
         timer = Time.GetComponent<TimeManager>();
+        _gameController = gameController.GetComponent<GameController>();
+        countDownText = countDownUI.GetComponent<Text>();
+
     }
 
     void OnEnable() {
@@ -27,9 +35,18 @@ public class TimeCoroutines : MonoBehaviour {
     }
 
     IEnumerator ToNextTurnCoroutin() {
-        Debug.Log("good job.");
         yield return new WaitForSeconds(5);
-        Debug.Log("next");
+        _gameController.Turn++;
+        countDownText.text = "Next";
+        countDownUI.SetActive(true);
+        yield return new WaitForSeconds(1);
+        countDownText.fontSize = 40;
+        countDownText.text = $"{_gameController.Order[_gameController.Turn]}'s turn...";
+        yield return new WaitForSeconds(1);
+        countDownText.fontSize = 50;
+        countDownText.text = "Start";
+        yield return new WaitForSeconds(1);
+        countDownUI.SetActive(false);
         timer.CountTime = PlayerPrefs.GetInt("Time");
         gameObject.SetActive(false);
     }
@@ -55,7 +72,7 @@ public class TimeCoroutines : MonoBehaviour {
         }
         Destroy(vanishedMino);
         GameObject.FindWithTag("StackedMino").GetComponent<Rigidbody>().isKinematic = false;
-        Debug.Log("After 3 sec, will be next player's turn.");
+        Debug.Log("After 5 sec, will be next player's turn.");
         yield return new WaitForSeconds(3);
         timer.CountTime = PlayerPrefs.GetInt("Time");
         minoController.SetActive(true);

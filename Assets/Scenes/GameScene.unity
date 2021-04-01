@@ -617,8 +617,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8db2c36e84deaa49b1d40c9a7ab0784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 781622059}
   minoController: {fileID: 126807367}
   gameOverPanel: {fileID: 642899703}
+  countDownUI: {fileID: 1804830653}
   Time: {fileID: 3812123}
 --- !u!850595691 &472331106
 LightingSettings:
@@ -1120,6 +1122,10 @@ MonoBehaviour:
   timer: {fileID: 3812123}
   timeCoroutines: {fileID: 282864642}
   countDown: {fileID: 1804830653}
+  players:
+  - 1
+  - 2
+  - 3
 --- !u!4 &781622061
 Transform:
   m_ObjectHideFlags: 0
@@ -2156,7 +2162,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 350}
+  m_SizeDelta: {x: 900, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804830655
 MonoBehaviour:
@@ -2191,7 +2197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start.
+  m_Text: Start
 --- !u!222 &1804830656
 CanvasRenderer:
   m_ObjectHideFlags: 0

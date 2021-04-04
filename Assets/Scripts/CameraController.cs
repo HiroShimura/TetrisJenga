@@ -64,14 +64,4 @@ public class CameraController : MonoBehaviour {
         transform.RotateAround(focusObjectPos, transform.right, angle.x);
         transform.RotateAround(focusObjectPos, Vector3.up, angle.y);
     }
-
-    void OnDestroy() {
-        /*
-        int high // ジェンガの高さ（整数でおｋ）
-        highを調べる
-        if(high > デフォルトの高さ){
-        最上段にミノが積めるような位置にカメラを移動
-        }
-        */
-    }
 }

@@ -8,27 +8,38 @@ public class TimeManager : MonoBehaviour {
     string text;
 
     public float CountTime { get; set; }
-    public GameObject Sta { get; set; }
+    public GameObject StackedMino { get; set; }
     public bool NotNull { get; set; } = false;
 
-    // Start is called before the first frame update
     void Start() {
-        text = GetComponent<Text>().text;
-        CountTime = PlayerPrefs.GetInt("Time", 20);
+        text = GetComponent<Text>().text; // "Time: "
+        CountTime = PlayerPrefs.GetInt("Time", 20); // オプションで設定した時間をセット
     }
 
-    // Update is called once per frame
     void Update() {
+        // コルーティン中はvoidを返させる
         if (timeCoroutines.activeSelf)
             return;
+
+        // 時間切れ
         if (CountTime <= 0) {
-            timeCoroutines.SetActive(true);
-            GetComponent<Text>().text = text + 0.ToString("F2");
+            timeCoroutines.SetActive(true); // 時間切れのコルーティンを開始するため
+            GetComponent<Text>().text = text + 0.ToString("F2"); // 0.00を表示
         }
+
+        // 操作中
         else if (CountTime > 0) {
-            Sta = GameObject.FindWithTag("StackedMino");
-            if (NotNull == true && Input.GetKeyDown(KeyCode.Space)) timeCoroutines.SetActive(true);
-            else if (Sta != null) NotNull = true;
+            StackedMino = GameObject.FindWithTag("StackedMino"); // 空中にあるミノを探す
+
+            // 空中にミノが存在し、Spaceが押された場合に次のプレイヤーへ遷移するコルーティンを開始するため
+            if (NotNull == true && Input.GetKeyDown(KeyCode.Space))
+                timeCoroutines.SetActive(true);
+
+            // 空中にミノがあることを確認
+            else if (StackedMino != null)
+                NotNull = true;
+
+            // 残り時間の表示
             CountTime -= Time.deltaTime;
             GetComponent<Text>().text = text + CountTime.ToString("F2");
         }

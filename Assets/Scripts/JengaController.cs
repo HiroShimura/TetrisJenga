@@ -11,22 +11,18 @@ public class JengaController : MonoBehaviour {
     public GameObject jMinoPrefab;
     public GameObject lMinoPrefab;
 
-    [field: SerializeField, Range(4, 12)]
     public int Layers {
-        get; set;
-    }
-    public GameObject SelectedMino {
         get; set;
     }
 
     List<char> direction = new List<char> { 'N', 'E', 'W', 'S' };
 
     void Awake() {
-        int random = Random.Range(0, 4);
-        Layers = PlayerPrefs.GetInt("Layer", 8);
+        int random = Random.Range(0, 4); // 向きを決める乱数
+        Layers = PlayerPrefs.GetInt("Layer", 8); // オプションで設定した段数を代入
         for (int i = 1; i < Layers + 1; i++) {
-            float high = (i - 0.5f) * 1.01f;
-            int type = Random.Range(1, 11);
+            float high = (i - 0.5f) * 1.01f; // 生成する高さを決定
+            int type = Random.Range(1, 11); // どのタイプを積むのかを選定
             switch (type) {
                 case 1:
                     Type1(direction[random], high, i);
@@ -72,6 +68,8 @@ break;
                 default:
                     break;
             }
+
+            // 方向がなるべく被らないように乱数を絞る
             if (direction.Count == 4) {
                 direction.RemoveAt(random);
                 random = Random.Range(0, 3);
@@ -81,7 +79,7 @@ break;
                 random = Random.Range(0, 2);
             }
             else {
-                direction = new List<char> { 'N', 'E', 'W', 'S' };
+                direction = new List<char> { 'N', 'E', 'W', 'S' }; // リストの再作成
                 random = Random.Range(0, 4);
             }
         }
@@ -828,9 +826,5 @@ break;
                 break;
         }
         */
-    }
-
-    private void OnDestroy() {
-        // Debug.Log(SelectedMino.name);
     }
 }

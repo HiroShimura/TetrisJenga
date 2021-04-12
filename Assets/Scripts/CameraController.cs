@@ -17,13 +17,26 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 preMousePos;
 
+    bool dollyInLimit = false;
+    bool dollyOutLimit = false;
+    [SerializeField] Collider dollyInLimitCol;
+    [SerializeField] Collider limitColPositiveX;
+    [SerializeField] Collider limitColNegativeX;
+    [SerializeField] Collider limitColPositiveY;
+    [SerializeField] Collider limitColNegativeY;
+    [SerializeField] Collider limitColPositiveZ;
+    [SerializeField] Collider limitColNegativeZ;
+
     void Update() {
         MouseUpdate();
     }
 
     void MouseUpdate() {
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollWheel != 0.0f) {
+        if (dollyInLimit && scrollWheel > 0.0f || dollyOutLimit && scrollWheel < 0.0f) {
+            transform.position += transform.forward * 0;
+        }
+        else {
             MouseWheel(scrollWheel);
         }
         if (Input.GetMouseButtonDown(0) ||
@@ -48,11 +61,19 @@ public class CameraController : MonoBehaviour {
         if (diff.magnitude < Vector3.kEpsilon) {
             return;
         }
+        /*
         if (Input.GetMouseButton(2)) {
             Cursor.visible = false;
+            if (dollyInLimit || dollyOutLimit) {
+
+            }
+            else {
+
+            }
             transform.Translate(-diff * Time.deltaTime * moveSpeed);
         }
-        else if (Input.GetMouseButton(1)) {
+        */
+        if (Input.GetMouseButton(1)) {
             Cursor.visible = false;
             CameraRotate(new Vector2(-diff.y, diff.x) * rotateSpeed);
         }
@@ -63,5 +84,22 @@ public class CameraController : MonoBehaviour {
         Vector3 focusObjectPos = new Vector3(0, 0, 0);
         transform.RotateAround(focusObjectPos, transform.right, angle.x);
         transform.RotateAround(focusObjectPos, Vector3.up, angle.y);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        // 衝突したコライダーが dollyInLimitCol の場合
+        if (other == dollyInLimitCol) {
+            dollyInLimit = true; // ドリーインの限界判定フラグを有効
+        }
+        // 衝突したコライダーが dollyOutLimitCol の場合
+        else if (other == limitColPositiveX || limitColNegativeX || limitColPositiveY || limitColNegativeY || limitColPositiveZ || limitColNegativeZ) {
+            dollyOutLimit = true; // ドリーアウトの限界判定フラグを有効
+        }
+    }
+
+    // コライダーとの衝突が解除した場合の処理
+    void OnTriggerExit(Collider other) {
+        dollyInLimit = false; // ドリーインの限界判定フラグを無効
+        dollyOutLimit = false; // ドリーアウトの限界判定フラグを無効
     }
 }

@@ -95,10 +95,10 @@ public class MinoController : MonoBehaviour {
         Vector3 moveTo = Camera.main.ScreenToWorldPoint(mousePos);
 
         // タワーからミノを抜いて、ミノの上下の移動もできる状態
-        if (target.transform.position.x < -4
-            || target.transform.position.x > 4
-            || target.transform.position.z < -4
-            || target.transform.position.z > 4
+        if (target.transform.position.x < -0.4f
+            || target.transform.position.x > 0.4f
+            || target.transform.position.z < -0.4f
+            || target.transform.position.z > 0.4f
             || target.CompareTag("StackedMino")) {
             target.tag = "StackedMino";
             targetRbCache.MovePosition(new Vector3(moveTo.x + offset.x, moveTo.y + offset.y, moveTo.z + offset.z));

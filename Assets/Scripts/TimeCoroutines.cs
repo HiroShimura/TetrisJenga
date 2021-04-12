@@ -48,8 +48,10 @@ public class TimeCoroutines : MonoBehaviour {
             countDownText.text = $"{_gameController.Order[_gameController.Turn + 1]}'s turn...";
 
         // StackedMinoのタグを切り替えてからNullを代入
-        timer.StackedMino.tag = "Mino";
-        timer.StackedMino = null;
+        if (timer.StackedMino != null) {
+            timer.StackedMino.tag = "Mino";
+            timer.StackedMino = null;
+        }
 
         yield return new WaitForSeconds(2);
         countDownText.fontSize = 50;

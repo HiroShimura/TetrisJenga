@@ -62,6 +62,9 @@ public class GameController : MonoBehaviour {
 
         // Pauseのためのif文
         if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (gameOverPanel) {
+                return;
+            }
             if (!pausePanel.activeSelf) {
                 minoController.SetActive(false);
                 pausePanel.SetActive(true);

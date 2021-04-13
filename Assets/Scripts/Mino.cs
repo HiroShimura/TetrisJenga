@@ -9,7 +9,7 @@ public class Mino : MonoBehaviour {
 
     void Start() {
         gameController = GameObject.Find("GameController");
-        collisionSe = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        // collisionSe = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     }
 
     void OnMouseEnter() {
@@ -27,8 +27,8 @@ public class Mino : MonoBehaviour {
 
     void Update() {
         if (transform.position.y < -10) {
-            GameController _gameController = gameController.GetComponent<GameController>();
-            _gameController.GameOver();
+            //GameController _gameController = gameController.GetComponent<GameController>();
+            //_gameController.GameOver();
         }
     }
     private void OnCollisionEnter(Collision collision) {

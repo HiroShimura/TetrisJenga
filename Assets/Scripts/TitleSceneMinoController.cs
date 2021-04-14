@@ -2,25 +2,52 @@
 using UnityEngine;
 
 public class TitleSceneMinoController : MonoBehaviour {
-    public GameObject tMinoPrefab;
-    public GameObject iMinoPrefab;
-    public GameObject oMinoPrefab;
-    public GameObject sMinoPrefab;
-    public GameObject zMinoPrefab;
-    public GameObject jMinoPrefab;
-    public GameObject lMinoPrefab;
+    [SerializeField] GameObject[] prefabs;
+    Vector3 rotate;
 
     void Start() {
         StartCoroutine(TitleSceneCoroutine());
     }
 
     IEnumerator TitleSceneCoroutine() {
-        float fallPosX = Random.Range(-4.5f, 4.5f);
-        float fallPosY = Random.Range(3f, 5f);
-        float fallPosZ = Random.Range(-9.5f, -3f);
-        Instantiate(lMinoPrefab, new Vector3(0, 0, -3f), Quaternion.identity);
-        yield return new WaitForSeconds(1);
-        // /*
+        while (true) {
+            int posZ = Random.Range(0, 6);
+            switch (posZ) {
+                case 0:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-10f, 10f), 8, 0), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                case 1:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-8.5f, 8.5f), 7, -1.5f), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                case 2:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-6.5f, 6.5f), 6, -3.5f), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                case 3:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-4.5f, 4.5f), 5, -5.5f), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                case 4:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-2.5f, 2.5f), 4, -7.5f), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                case 5:
+                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-0.5f, 0.5f), 2, -9.5f), Quaternion.Euler(rotate));
+                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    break;
+                default:
+                    break;
+            }
+        }
+        /*
         while (true) {
             for (int i = 0; i < 10; i++) {
                 GameObject selectedPrefab = prefabs[Random.Range(0, 7)];

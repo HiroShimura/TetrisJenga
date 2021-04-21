@@ -22,8 +22,8 @@ public class JengaController : MonoBehaviour {
         int random = Random.Range(0, 4); // 向きを決める乱数
         Layers = PlayerPrefs.GetInt("Layer", 8); // オプションで設定した段数を代入
         for (int i = 1; i < Layers + 1; i++) {
-            float high = i * 0.15f + 0.7f;// / 5 + 0.7f) * 1.2f; // 生成する高さを決定
-            int type = 1;// Random.Range(1, 11); // どのタイプを積むのかを選定
+            float high = i * 0.15f + 0.7f; // 生成する高さを決定
+            int type = Random.Range(1, 11); // どのタイプを積むのかを選定
             switch (type) {
                 case 1:
                     Type1(direction[random], high, i);
@@ -55,17 +55,15 @@ public class JengaController : MonoBehaviour {
                 case 10:
                     Type10(direction[random], high, i);
                     break;
-                /*
-case 11:
-Type11(direction[random], high, i);
-break;
-case 12:
-Type12(direction[random], high, i);
-break;
-case 13:
-Type13(direction[random], high, i);
-break;
-*/
+                case 11:
+                    Type11(direction[random], high, i);
+                    break;
+                case 12:
+                    Type12(direction[random], high, i);
+                    break;
+                case 13:
+                    Type13(direction[random], high, i);
+                    break;
                 default:
                     break;
             }
@@ -171,43 +169,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino1.transform.position = new Vector3(-0.5f, high, -1);
+                jMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
                 jMino1.transform.Rotate(0, 0, 0);
-                zMino.transform.position = new Vector3(-0.5f, high, 0);
+                zMino.transform.position = new Vector3(-0.05f, high, 0);
                 zMino.transform.Rotate(0, 90, 0);
-                jMino2.transform.position = new Vector3(-0.5f, high, 1);
+                jMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
                 jMino2.transform.Rotate(0, 180, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino1.transform.position = new Vector3(-1, high, 0.5f);
+                jMino1.transform.position = new Vector3(-0.1f, high, 0.05f);
                 jMino1.transform.Rotate(0, 90, 0);
-                zMino.transform.position = new Vector3(0, high, 0.5f);
+                zMino.transform.position = new Vector3(0, high, 0.05f);
                 zMino.transform.Rotate(0, 0, 0);
-                jMino2.transform.position = new Vector3(1, high, 0.5f);
+                jMino2.transform.position = new Vector3(0.1f, high, 0.05f);
                 jMino2.transform.Rotate(0, 270, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino1.transform.position = new Vector3(-1, high, -0.5f);
+                jMino1.transform.position = new Vector3(-0.1f, high, -0.05f);
                 jMino1.transform.Rotate(0, 90, 0);
-                zMino.transform.position = new Vector3(0, high, -0.5f);
+                zMino.transform.position = new Vector3(0, high, -0.05f);
                 zMino.transform.Rotate(0, 0, 0);
-                jMino2.transform.position = new Vector3(1, high, -0.5f);
+                jMino2.transform.position = new Vector3(0.1f, high, -0.05f);
                 jMino2.transform.Rotate(0, 270, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino1.transform.position = new Vector3(0.5f, high, -1);
+                jMino1.transform.position = new Vector3(0.05f, high, -0.1f);
                 jMino1.transform.Rotate(0, 0, 0);
-                zMino.transform.position = new Vector3(0.5f, high, 0);
+                zMino.transform.position = new Vector3(0.05f, high, 0);
                 zMino.transform.Rotate(0, 90, 0);
-                jMino2.transform.position = new Vector3(0.5f, high, 1);
+                jMino2.transform.position = new Vector3(0.05f, high, 0.1f);
                 jMino2.transform.Rotate(0, 180, 0);
                 break;
             default:
@@ -235,43 +233,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                sMino.transform.position = new Vector3(0, high, -0.5f);
+                sMino.transform.position = new Vector3(0, high, -0.05f);
                 sMino.transform.Rotate(0, 0, 0);
-                lMino.transform.position = new Vector3(-1, high, -0.5f);
+                lMino.transform.position = new Vector3(-0.1f, high, -0.05f);
                 lMino.transform.Rotate(0, 270, 0);
-                jMino.transform.position = new Vector3(-0.5f, high, 1);
+                jMino.transform.position = new Vector3(-0.05f, high, 0.1f);
                 jMino.transform.Rotate(0, 180, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                sMino.transform.position = new Vector3(-0.5f, high, 0);
+                sMino.transform.position = new Vector3(-0.05f, high, 0);
                 sMino.transform.Rotate(0, 90, 0);
-                lMino.transform.position = new Vector3(-0.5f, high, 1);
+                lMino.transform.position = new Vector3(-0.05f, high, 0.1f);
                 lMino.transform.Rotate(0, 0, 0);
-                jMino.transform.position = new Vector3(1, high, 0.5f);
+                jMino.transform.position = new Vector3(0.1f, high, 0.05f);
                 jMino.transform.Rotate(0, 270, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                sMino.transform.position = new Vector3(0.5f, high, 0);
+                sMino.transform.position = new Vector3(0.05f, high, 0);
                 sMino.transform.Rotate(0, 90, 0);
-                lMino.transform.position = new Vector3(0.5f, high, -1);
+                lMino.transform.position = new Vector3(0.05f, high, -0.1f);
                 lMino.transform.Rotate(0, 180, 0);
-                jMino.transform.position = new Vector3(-1, high, -0.5f);
+                jMino.transform.position = new Vector3(-0.1f, high, -0.05f);
                 jMino.transform.Rotate(0, 90, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                sMino.transform.position = new Vector3(0, high, 0.5f);
+                sMino.transform.position = new Vector3(0, high, 0.05f);
                 sMino.transform.Rotate(0, 0, 0);
-                lMino.transform.position = new Vector3(1, high, 0.5f);
+                lMino.transform.position = new Vector3(0.1f, high, 0.05f);
                 lMino.transform.Rotate(0, 90, 0);
-                jMino.transform.position = new Vector3(0.5f, high, -1);
+                jMino.transform.position = new Vector3(0.05f, high, -0.1f);
                 jMino.transform.Rotate(0, 0, 0);
                 break;
             default:
@@ -299,43 +297,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                lMino.transform.position = new Vector3(-0.5f, high, -1);
+                lMino.transform.position = new Vector3(-0.05f, high, -0.1f);
                 lMino.transform.Rotate(0, 180, 0);
-                jMino.transform.position = new Vector3(-1, high, 0.5f);
+                jMino.transform.position = new Vector3(-0.1f, high, 0.05f);
                 jMino.transform.Rotate(0, 90, 0);
-                zMino.transform.position = new Vector3(0, high, 0.5f);
+                zMino.transform.position = new Vector3(0, high, 0.05f);
                 zMino.transform.Rotate(0, 0, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                lMino.transform.position = new Vector3(-1, high, 0.5f);
+                lMino.transform.position = new Vector3(-0.1f, high, 0.05f);
                 lMino.transform.Rotate(0, 270, 0);
-                jMino.transform.position = new Vector3(0.5f, high, 1);
+                jMino.transform.position = new Vector3(0.05f, high, 0.1f);
                 jMino.transform.Rotate(0, 180, 0);
-                zMino.transform.position = new Vector3(0.5f, high, 0);
+                zMino.transform.position = new Vector3(0.05f, high, 0);
                 zMino.transform.Rotate(0, 90, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                lMino.transform.position = new Vector3(1, high, -0.5f);
+                lMino.transform.position = new Vector3(0.1f, high, -0.05f);
                 lMino.transform.Rotate(0, 90, 0);
-                jMino.transform.position = new Vector3(-0.5f, high, -1);
+                jMino.transform.position = new Vector3(-0.05f, high, -0.1f);
                 jMino.transform.Rotate(0, 0, 0);
-                zMino.transform.position = new Vector3(-0.5f, high, 0);
+                zMino.transform.position = new Vector3(-0.05f, high, 0);
                 zMino.transform.Rotate(0, 90, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                lMino.transform.position = new Vector3(0.5f, high, 1);
+                lMino.transform.position = new Vector3(0.05f, high, 0.1f);
                 lMino.transform.Rotate(0, 0, 0);
-                jMino.transform.position = new Vector3(1, high, -0.5f);
+                jMino.transform.position = new Vector3(0.1f, high, -0.05f);
                 jMino.transform.Rotate(0, 270, 0);
-                zMino.transform.position = new Vector3(0, high, -0.5f);
+                zMino.transform.position = new Vector3(0, high, -0.05f);
                 zMino.transform.Rotate(0, 0, 0);
                 break;
             default:
@@ -363,43 +361,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                lMino1.transform.position = new Vector3(-0.5f, high, -1);
+                lMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
                 lMino1.transform.Rotate(0, 180, 0);
-                lMino2.transform.position = new Vector3(-1, high, 0.5f);
+                lMino2.transform.position = new Vector3(-0.1f, high, 0.05f);
                 lMino2.transform.Rotate(0, 270, 0);
-                oMino.transform.position = new Vector3(0, high, 1);
+                oMino.transform.position = new Vector3(0, high, 0.1f);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                lMino1.transform.position = new Vector3(-1, high, 0.5f);
+                lMino1.transform.position = new Vector3(-0.1f, high, 0.05f);
                 lMino1.transform.Rotate(0, 270, 0);
-                lMino2.transform.position = new Vector3(0.5f, high, 1);
+                lMino2.transform.position = new Vector3(0.05f, high, 0.1f);
                 lMino2.transform.Rotate(0, 0, 0);
-                oMino.transform.position = new Vector3(1, high, 0);
+                oMino.transform.position = new Vector3(0.1f, high, 0);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                lMino1.transform.position = new Vector3(1, high, -0.5f);
+                lMino1.transform.position = new Vector3(0.1f, high, -0.05f);
                 lMino1.transform.Rotate(0, 90, 0);
-                lMino2.transform.position = new Vector3(-0.5f, high, -1);
+                lMino2.transform.position = new Vector3(-0.05f, high, -0.1f);
                 lMino2.transform.Rotate(0, 180, 0);
-                oMino.transform.position = new Vector3(-1, high, 0);
+                oMino.transform.position = new Vector3(-0.1f, high, 0);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                lMino1.transform.position = new Vector3(0.5f, high, 1);
+                lMino1.transform.position = new Vector3(0.05f, high, 0.1f);
                 lMino1.transform.Rotate(0, 0, 0);
-                lMino2.transform.position = new Vector3(1, high, -0.5f);
+                lMino2.transform.position = new Vector3(0.1f, high, -0.05f);
                 lMino2.transform.Rotate(0, 90, 0);
-                oMino.transform.position = new Vector3(0, high, -1);
+                oMino.transform.position = new Vector3(0, high, -0.1f);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             default:
@@ -427,43 +425,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino1.transform.position = new Vector3(-0.5f, high, 1);
+                jMino1.transform.position = new Vector3(-0.05f, high, 0.1f);
                 jMino1.transform.Rotate(0, 180, 0);
-                jMino2.transform.position = new Vector3(-1, high, -0.5f);
+                jMino2.transform.position = new Vector3(-0.1f, high, -0.05f);
                 jMino2.transform.Rotate(0, 90, 0);
-                oMino.transform.position = new Vector3(0, high, -1);
+                oMino.transform.position = new Vector3(0, high, -0.1f);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino1.transform.position = new Vector3(1, high, 0.5f);
+                jMino1.transform.position = new Vector3(0.1f, high, 0.05f);
                 jMino1.transform.Rotate(0, 270, 0);
-                jMino2.transform.position = new Vector3(-0.5f, high, 1);
+                jMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
                 jMino2.transform.Rotate(0, 180, 0);
-                oMino.transform.position = new Vector3(-1, high, 0);
+                oMino.transform.position = new Vector3(-0.1f, high, 0);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino1.transform.position = new Vector3(-1, high, -0.5f);
+                jMino1.transform.position = new Vector3(-0.1f, high, -0.05f);
                 jMino1.transform.Rotate(0, 90, 0);
-                jMino2.transform.position = new Vector3(0.5f, high, -1);
+                jMino2.transform.position = new Vector3(0.05f, high, -0.1f);
                 jMino2.transform.Rotate(0, 0, 0);
-                oMino.transform.position = new Vector3(1, high, 0);
+                oMino.transform.position = new Vector3(0.1f, high, 0);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino1.transform.position = new Vector3(0.5f, high, -1);
+                jMino1.transform.position = new Vector3(0.05f, high, -0.1f);
                 jMino1.transform.Rotate(0, 0, 0);
-                jMino2.transform.position = new Vector3(1, high, 0.5f);
+                jMino2.transform.position = new Vector3(0.1f, high, 0.05f);
                 jMino2.transform.Rotate(0, 270, 0);
-                oMino.transform.position = new Vector3(0, high, 1);
+                oMino.transform.position = new Vector3(0, high, 0.1f);
                 oMino.transform.Rotate(0, 0, 0);
                 break;
             default:
@@ -491,43 +489,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino.transform.position = new Vector3(0, high, -0.5f);
+                jMino.transform.position = new Vector3(0, high, -0.05f);
                 jMino.transform.Rotate(0, 270, 0);
-                tMino1.transform.position = new Vector3(-1.5f, high, -0.5f);
+                tMino1.transform.position = new Vector3(-0.15f, high, -0.05f);
                 tMino1.transform.Rotate(0, 180, 0);
-                tMino2.transform.position = new Vector3(-0.5f, high, 1.5f);
+                tMino2.transform.position = new Vector3(-0.05f, high, 0.15f);
                 tMino2.transform.Rotate(0, 270, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino.transform.position = new Vector3(-0.5f, high, 0);
+                jMino.transform.position = new Vector3(-0.05f, high, 0);
                 jMino.transform.Rotate(0, 0, 0);
-                tMino1.transform.position = new Vector3(-0.5f, high, 1.5f);
+                tMino1.transform.position = new Vector3(-0.05f, high, 0.15f);
                 tMino1.transform.Rotate(0, 270, 0);
-                tMino2.transform.position = new Vector3(1.5f, high, 0.5f);
+                tMino2.transform.position = new Vector3(0.15f, high, 0.05f);
                 tMino2.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                jMino.transform.position = new Vector3(0.5f, high, 0);
+                jMino.transform.position = new Vector3(0.05f, high, 0);
                 jMino.transform.Rotate(0, 180, 0);
-                tMino1.transform.position = new Vector3(0.5f, high, -1.5f);
+                tMino1.transform.position = new Vector3(0.05f, high, -0.15f);
                 tMino1.transform.Rotate(0, 90, 0);
-                tMino2.transform.position = new Vector3(-1.5f, high, -0.5f);
+                tMino2.transform.position = new Vector3(-0.15f, high, -0.05f);
                 tMino2.transform.Rotate(0, 180, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                jMino.transform.position = new Vector3(0, high, 0.5f);
+                jMino.transform.position = new Vector3(0, high, 0.05f);
                 jMino.transform.Rotate(0, 90, 0);
-                tMino1.transform.position = new Vector3(1.5f, high, 0.5f);
+                tMino1.transform.position = new Vector3(0.15f, high, 0.05f);
                 tMino1.transform.Rotate(0, 0, 0);
-                tMino2.transform.position = new Vector3(0.5f, high, -1.5f);
+                tMino2.transform.position = new Vector3(0.05f, high, -0.15f);
                 tMino2.transform.Rotate(0, 90, 0);
                 break;
             default:
@@ -555,43 +553,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                iMino.transform.position = new Vector3(1.5f, high, 0);
+                iMino.transform.position = new Vector3(0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                tMino1.transform.position = new Vector3(-0.5f, high, -1.5f);
+                tMino1.transform.position = new Vector3(-0.05f, high, -0.15f);
                 tMino1.transform.Rotate(0, 90, 0);
-                tMino2.transform.position = new Vector3(-1.5f, high, 0.5f);
+                tMino2.transform.position = new Vector3(-0.15f, high, 0.05f);
                 tMino2.transform.Rotate(0, 180, 0);
-                lMino.transform.position = new Vector3(0, high, 0.5f);
+                lMino.transform.position = new Vector3(0, high, 0.05f);
                 lMino.transform.Rotate(0, 90, 0);
                 break;
             case 'E':
-                iMino.transform.position = new Vector3(0, high, -1.5f);
+                iMino.transform.position = new Vector3(0, high, -0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                tMino1.transform.position = new Vector3(-1.5f, high, 0.5f);
+                tMino1.transform.position = new Vector3(-0.15f, high, 0.05f);
                 tMino1.transform.Rotate(0, 180, 0);
-                tMino2.transform.position = new Vector3(0.5f, high, 1.5f);
+                tMino2.transform.position = new Vector3(0.05f, high, 0.15f);
                 tMino2.transform.Rotate(0, 270, 0);
-                lMino.transform.position = new Vector3(0.5f, high, 0);
+                lMino.transform.position = new Vector3(0.05f, high, 0);
                 lMino.transform.Rotate(0, 180, 0);
                 break;
             case 'W':
-                iMino.transform.position = new Vector3(0, high, 1.5f);
+                iMino.transform.position = new Vector3(0, high, 0.15f);
                 iMino.transform.Rotate(0, 0, 0);
-                tMino1.transform.position = new Vector3(1.5f, high, -0.5f);
+                tMino1.transform.position = new Vector3(0.15f, high, -0.05f);
                 tMino1.transform.Rotate(0, 00, 0);
-                tMino2.transform.position = new Vector3(-0.5f, high, -1.5f);
+                tMino2.transform.position = new Vector3(-0.05f, high, -0.15f);
                 tMino2.transform.Rotate(0, 90, 0);
-                lMino.transform.position = new Vector3(-0.5f, high, 0);
+                lMino.transform.position = new Vector3(-0.05f, high, 0);
                 lMino.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-                iMino.transform.position = new Vector3(-1.5f, high, 0);
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
                 iMino.transform.Rotate(0, 90, 0);
-                tMino1.transform.position = new Vector3(0.5f, high, 1.5f);
+                tMino1.transform.position = new Vector3(0.05f, high, 0.15f);
                 tMino1.transform.Rotate(0, 270, 0);
-                tMino2.transform.position = new Vector3(1.5f, high, -0.5f);
+                tMino2.transform.position = new Vector3(0.15f, high, -0.05f);
                 tMino2.transform.Rotate(0, 0, 0);
-                lMino.transform.position = new Vector3(0, high, -0.5f);
+                lMino.transform.position = new Vector3(0, high, -0.05f);
                 lMino.transform.Rotate(0, 270, 0);
                 break;
             default:
@@ -619,43 +617,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                lMino.transform.position = new Vector3(1, high, 0.5f);
+                lMino.transform.position = new Vector3(0.1f, high, 0.05f);
                 lMino.transform.Rotate(0, 90, 0);
-                tMino1.transform.position = new Vector3(0.5f, high, -1.5f);
+                tMino1.transform.position = new Vector3(0.05f, high, -0.15f);
                 tMino1.transform.Rotate(0, 90, 0);
-                tMino2.transform.position = new Vector3(-1.5f, high, -0.5f);
+                tMino2.transform.position = new Vector3(-0.15f, high, -0.05f);
                 tMino2.transform.Rotate(0, 180, 0);
-                zMino.transform.position = new Vector3(-0.5f, high, 1);
+                zMino.transform.position = new Vector3(-0.05f, high, 0.1f);
                 zMino.transform.Rotate(0, 90, 0);
                 break;
             case 'E':
-                lMino.transform.position = new Vector3(0.5f, high, -1);
+                lMino.transform.position = new Vector3(0.05f, high, -0.1f);
                 lMino.transform.Rotate(0, 180, 0);
-                tMino1.transform.position = new Vector3(-1.5f, high, -0.5f);
+                tMino1.transform.position = new Vector3(-0.15f, high, -0.05f);
                 tMino1.transform.Rotate(0, 180, 0);
-                tMino2.transform.position = new Vector3(-0.5f, high, 1.5f);
+                tMino2.transform.position = new Vector3(-0.05f, high, 0.15f);
                 tMino2.transform.Rotate(0, 270, 0);
-                zMino.transform.position = new Vector3(1, high, 0.5f);
+                zMino.transform.position = new Vector3(0.1f, high, 0.05f);
                 zMino.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-                lMino.transform.position = new Vector3(-0.5f, high, 1);
+                lMino.transform.position = new Vector3(-0.05f, high, 0.1f);
                 lMino.transform.Rotate(0, 0, 0);
-                tMino1.transform.position = new Vector3(1.5f, high, 0.5f);
+                tMino1.transform.position = new Vector3(0.15f, high, 0.05f);
                 tMino1.transform.Rotate(0, 0, 0);
-                tMino2.transform.position = new Vector3(0.5f, high, -1.5f);
+                tMino2.transform.position = new Vector3(0.05f, high, -0.15f);
                 tMino2.transform.Rotate(0, 90, 0);
-                zMino.transform.position = new Vector3(-1, high, -0.5f);
+                zMino.transform.position = new Vector3(-0.1f, high, -0.05f);
                 zMino.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-                lMino.transform.position = new Vector3(-1, high, -0.5f);
+                lMino.transform.position = new Vector3(-0.1f, high, -0.05f);
                 lMino.transform.Rotate(0, 270, 0);
-                tMino1.transform.position = new Vector3(-0.5f, high, 1.5f);
+                tMino1.transform.position = new Vector3(-0.05f, high, 0.15f);
                 tMino1.transform.Rotate(0, 270, 0);
-                tMino2.transform.position = new Vector3(1.5f, high, 0.5f);
+                tMino2.transform.position = new Vector3(0.15f, high, 0.05f);
                 tMino2.transform.Rotate(0, 0, 0);
-                zMino.transform.position = new Vector3(0.5f, high, -1);
+                zMino.transform.position = new Vector3(0.05f, high, -0.1f);
                 zMino.transform.Rotate(0, 90, 0);
                 break;
             default:
@@ -683,43 +681,43 @@ break;
         }
         switch (direction) {
             case 'N':
-                tMino1.transform.position = new Vector3(0.5f, high, 1.5f);
+                tMino1.transform.position = new Vector3(0.05f, high, 0.15f);
                 tMino1.transform.Rotate(0, 270, 0);
-                jMino.transform.position = new Vector3(1, high, -0.5f);
+                jMino.transform.position = new Vector3(0.1f, high, -0.05f);
                 jMino.transform.Rotate(0, 270, 0);
-                sMino.transform.position = new Vector3(-0.5f, high, -1);
+                sMino.transform.position = new Vector3(-0.05f, high, -0.1f);
                 sMino.transform.Rotate(0, 90, 0);
-                tMino2.transform.position = new Vector3(-1.5f, high, 0.5f);
+                tMino2.transform.position = new Vector3(-0.15f, high, 0.05f);
                 tMino2.transform.Rotate(0, 180, 0);
                 break;
             case 'E':
-                tMino1.transform.position = new Vector3(1.5f, high, -0.5f);
+                tMino1.transform.position = new Vector3(0.15f, high, -0.05f);
                 tMino1.transform.Rotate(0, 0, 0);
-                jMino.transform.position = new Vector3(-0.5f, high, -1);
+                jMino.transform.position = new Vector3(-0.05f, high, -0.1f);
                 jMino.transform.Rotate(0, 0, 0);
-                sMino.transform.position = new Vector3(-1, high, 0.5f);
+                sMino.transform.position = new Vector3(-0.1f, high, 0.05f);
                 sMino.transform.Rotate(0, 0, 0);
-                tMino2.transform.position = new Vector3(0.5f, high, 1.5f);
+                tMino2.transform.position = new Vector3(0.05f, high, 0.15f);
                 tMino2.transform.Rotate(0, 270, 0);
                 break;
             case 'W':
-                tMino1.transform.position = new Vector3(-1.5f, high, 0.5f);
+                tMino1.transform.position = new Vector3(-0.15f, high, 0.05f);
                 tMino1.transform.Rotate(0, 180, 0);
-                jMino.transform.position = new Vector3(0.5f, high, 1);
+                jMino.transform.position = new Vector3(0.05f, high, 0.1f);
                 jMino.transform.Rotate(0, 180, 0);
-                sMino.transform.position = new Vector3(1, high, -0.5f);
+                sMino.transform.position = new Vector3(0.1f, high, -0.05f);
                 sMino.transform.Rotate(0, 0, 0);
-                tMino2.transform.position = new Vector3(-0.5f, high, -1.5f);
+                tMino2.transform.position = new Vector3(-0.05f, high, -0.15f);
                 tMino2.transform.Rotate(0, 90, 0);
                 break;
             case 'S':
-                tMino1.transform.position = new Vector3(-0.5f, high, -1.5f);
+                tMino1.transform.position = new Vector3(-0.05f, high, -0.15f);
                 tMino1.transform.Rotate(0, 90, 0);
-                jMino.transform.position = new Vector3(-1, high, 0.5f);
+                jMino.transform.position = new Vector3(-0.1f, high, 0.05f);
                 jMino.transform.Rotate(0, 90, 0);
-                sMino.transform.position = new Vector3(0.5f, high, 1);
+                sMino.transform.position = new Vector3(0.05f, high, 0.1f);
                 sMino.transform.Rotate(0, 270, 0);
-                tMino2.transform.position = new Vector3(1.5f, high, -0.5f);
+                tMino2.transform.position = new Vector3(0.15f, high, -0.05f);
                 tMino2.transform.Rotate(0, 0, 0);
                 break;
             default:
@@ -727,105 +725,183 @@ break;
         }
     }
     void Type11(char direction, float high, int layer) {
-        /*
         // △ △ △ ◇
         // △ ◆ ◇ ◇
         // ◆ ◆ ◇ ▲
         // ◆ ▲ ▲ ▲
-        GameObject ;
-        GameObject ;
-        GameObject ;
-        GameObject ;
-                if (layer == 1) {
-            iMino.tag = "BottomMino";
+        GameObject lMino1 = Instantiate(lMinoPrefab);
+        GameObject zMino1 = Instantiate(zMinoPrefab);
+        GameObject lMino2 = Instantiate(lMinoPrefab);
+        GameObject zMino2 = Instantiate(zMinoPrefab);
+        if (layer == 1) {
             lMino1.tag = "BottomMino";
-            sMino.tag = "BottomMino";
+            zMino1.tag = "BottomMino";
             lMino2.tag = "BottomMino";
+            zMino2.tag = "BottomMino";
         }
         switch (direction) {
             case 'N':
-
+                lMino1.transform.position = new Vector3(0.1f, high, 0.05f);
+                lMino1.transform.Rotate(0, 90, 0);
+                zMino1.transform.position = new Vector3(0.05f, high, -0.1f);
+                zMino1.transform.Rotate(0, 90, 0);
+                lMino2.transform.position = new Vector3(-0.1f, high, -0.05f);
+                lMino2.transform.Rotate(0, 270, 0);
+                zMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
+                zMino2.transform.Rotate(0, 90, 0);
                 break;
             case 'E':
-
+                lMino1.transform.position = new Vector3(0.05f, high, -0.1f);
+                lMino1.transform.Rotate(0, 180, 0);
+                zMino1.transform.position = new Vector3(-0.1f, high, -0.05f);
+                zMino1.transform.Rotate(0, 0, 0);
+                lMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
+                lMino2.transform.Rotate(0, 0, 0);
+                zMino2.transform.position = new Vector3(0.1f, high, 0.05f);
+                zMino2.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-
+                lMino1.transform.position = new Vector3(0.05f, high, -0.1f);
+                lMino1.transform.Rotate(0, 180, 0);
+                zMino1.transform.position = new Vector3(-0.1f, high, -0.05f);
+                zMino1.transform.Rotate(0, 0, 0);
+                lMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
+                lMino2.transform.Rotate(0, 0, 0);
+                zMino2.transform.position = new Vector3(0.1f, high, 0.05f);
+                zMino2.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-
+                lMino1.transform.position = new Vector3(0.1f, high, 0.05f);
+                lMino1.transform.Rotate(0, 90, 0);
+                zMino1.transform.position = new Vector3(0.05f, high, -0.1f);
+                zMino1.transform.Rotate(0, 90, 0);
+                lMino2.transform.position = new Vector3(-0.1f, high, -0.05f);
+                lMino2.transform.Rotate(0, 270, 0);
+                zMino2.transform.position = new Vector3(-0.05f, high, 0.1f);
+                zMino2.transform.Rotate(0, 90, 0);
                 break;
             default:
                 break;
         }
-        */
     }
     void Type12(char direction, float high, int layer) {
-        /*
         // ○ □ □ □
         // ○ ○ ● □
         // ■ ○ ● ●
         // ■ ■ ■ ●
-        GameObject ;
-        GameObject ;
-        GameObject ;
-        GameObject ;
-                if (layer == 1) {
-            iMino.tag = "BottomMino";
-            lMino1.tag = "BottomMino";
-            sMino.tag = "BottomMino";
-            lMino2.tag = "BottomMino";
+        GameObject sMino1 = Instantiate(sMinoPrefab);
+        GameObject jMino1 = Instantiate(jMinoPrefab);
+        GameObject sMino2 = Instantiate(sMinoPrefab);
+        GameObject jMino2 = Instantiate(jMinoPrefab);
+        if (layer == 1) {
+            sMino1.tag = "BottomMino";
+            jMino1.tag = "BottomMino";
+            sMino2.tag = "BottomMino";
+            jMino2.tag = "BottomMino";
         }
         switch (direction) {
             case 'N':
-
+                sMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
+                sMino1.transform.Rotate(0, 90, 0);
+                jMino1.transform.position = new Vector3(0.1f, high, -0.05f);
+                jMino1.transform.Rotate(0, 270, 0);
+                sMino2.transform.position = new Vector3(0.05f, high, 0.1f);
+                sMino2.transform.Rotate(0, 90, 0);
+                jMino2.transform.position = new Vector3(-0.1f, high, 0.05f);
+                jMino2.transform.Rotate(0, 90, 0);
                 break;
             case 'E':
-
+                sMino1.transform.position = new Vector3(-0.1f, high, 0.05f);
+                sMino1.transform.Rotate(0, 0, 0);
+                jMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
+                jMino1.transform.Rotate(0, 0, 0);
+                sMino2.transform.position = new Vector3(0.1f, high, -0.05f);
+                sMino2.transform.Rotate(0, 0, 0);
+                jMino2.transform.position = new Vector3(0.05f, high, 0.1f);
+                jMino2.transform.Rotate(0, 180, 0);
                 break;
             case 'W':
-
+                sMino1.transform.position = new Vector3(-0.1f, high, 0.05f);
+                sMino1.transform.Rotate(0, 0, 0);
+                jMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
+                jMino1.transform.Rotate(0, 0, 0);
+                sMino2.transform.position = new Vector3(0.1f, high, -0.05f);
+                sMino2.transform.Rotate(0, 0, 0);
+                jMino2.transform.position = new Vector3(0.05f, high, 0.1f);
+                jMino2.transform.Rotate(0, 180, 0);
                 break;
             case 'S':
-
+                sMino1.transform.position = new Vector3(-0.05f, high, -0.1f);
+                sMino1.transform.Rotate(0, 90, 0);
+                jMino1.transform.position = new Vector3(0.1f, high, -0.05f);
+                jMino1.transform.Rotate(0, 270, 0);
+                sMino2.transform.position = new Vector3(0.05f, high, 0.1f);
+                sMino2.transform.Rotate(0, 90, 0);
+                jMino2.transform.position = new Vector3(-0.1f, high, 0.05f);
+                jMino2.transform.Rotate(0, 90, 0);
                 break;
             default:
                 break;
         }
-        */
     }
     void Type13(char direction, float high, int layer) {
-        /*
         // ＠ ＠ ＠ ＠
         // △ ＆ ＆ □
         // △ ＆ ＆ □
         // △ △ □ □
-        GameObject ;
-        GameObject ;
-        GameObject ;
-        GameObject ;
-                if (layer == 1) {
+        GameObject iMino = Instantiate(iMinoPrefab);
+        GameObject jMino = Instantiate(jMinoPrefab);
+        GameObject lMino = Instantiate(lMinoPrefab);
+        GameObject oMino = Instantiate(oMinoPrefab);
+        if (layer == 1) {
             iMino.tag = "BottomMino";
-            lMino1.tag = "BottomMino";
-            sMino.tag = "BottomMino";
-            lMino2.tag = "BottomMino";
+            jMino.tag = "BottomMino";
+            lMino.tag = "BottomMino";
+            oMino.tag = "BottomMino";
         }
         switch (direction) {
             case 'N':
-
+                iMino.transform.position = new Vector3(0.15f, high, 0);
+                iMino.transform.Rotate(0, 90, 0);
+                jMino.transform.position = new Vector3(-0.05f, high, -0.1f);
+                jMino.transform.Rotate(0, 0, 0);
+                lMino.transform.position = new Vector3(-0.05f, high, 0.1f);
+                lMino.transform.Rotate(0, 0, 0);
+                oMino.transform.position = new Vector3(0, high, 0);
+                oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'E':
-
+                iMino.transform.position = new Vector3(0, high, -0.15f);
+                iMino.transform.Rotate(0, 0, 0);
+                jMino.transform.position = new Vector3(-0.1f, high, 0.05f);
+                jMino.transform.Rotate(0, 90, 0);
+                lMino.transform.position = new Vector3(0.1f, high, 0.05f);
+                lMino.transform.Rotate(0, 90, 0);
+                oMino.transform.position = new Vector3(0, high, 0);
+                oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'W':
-
+                iMino.transform.position = new Vector3(0, high, 0.15f);
+                iMino.transform.Rotate(0, 0, 0);
+                jMino.transform.position = new Vector3(0.1f, high, -0.05f);
+                jMino.transform.Rotate(0, 270, 0);
+                lMino.transform.position = new Vector3(-0.1f, high, -0.05f);
+                lMino.transform.Rotate(0, 270, 0);
+                oMino.transform.position = new Vector3(0, high, 0);
+                oMino.transform.Rotate(0, 0, 0);
                 break;
             case 'S':
-
+                iMino.transform.position = new Vector3(-0.15f, high, 0);
+                iMino.transform.Rotate(0, 90, 0);
+                jMino.transform.position = new Vector3(0.05f, high, 0.1f);
+                jMino.transform.Rotate(0, 180, 0);
+                lMino.transform.position = new Vector3(0.05f, high, -0.1f);
+                lMino.transform.Rotate(0, 180, 0);
+                oMino.transform.position = new Vector3(0, high, 0);
+                oMino.transform.Rotate(0, 0, 0);
                 break;
             default:
                 break;
         }
-        */
     }
 }

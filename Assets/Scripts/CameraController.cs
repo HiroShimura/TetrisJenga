@@ -32,6 +32,7 @@ public class CameraController : MonoBehaviour {
     }
 
     void MouseUpdate() {
+        /*
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         if (dollyInLimit && scrollWheel > 0.0f || dollyOutLimit && scrollWheel < 0.0f) {
             transform.position += transform.forward * 0;
@@ -39,6 +40,7 @@ public class CameraController : MonoBehaviour {
         else {
             MouseWheel(scrollWheel);
         }
+        */
         if (Input.GetMouseButtonDown(0) ||
            Input.GetMouseButtonDown(1) ||
            Input.GetMouseButtonDown(2)) {

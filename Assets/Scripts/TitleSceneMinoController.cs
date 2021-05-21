@@ -5,47 +5,37 @@ public class TitleSceneMinoController : MonoBehaviour {
     [SerializeField] GameObject[] prefabs;
     Vector3 rotate;
 
-    void Start() {
+    void Awake() {
         StartCoroutine(TitleSceneCoroutine());
     }
 
     IEnumerator TitleSceneCoroutine() {
         while (true) {
             int posZ = Random.Range(0, 6);
+            rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
             switch (posZ) {
                 case 0:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-10f, 10f), 8, 0), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-10f, 10f), 14, 0), Quaternion.Euler(rotate));
                     break;
                 case 1:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-8.5f, 8.5f), 7, -1.5f), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-8.5f, 8.5f), 12, -1.5f), Quaternion.Euler(rotate));
                     break;
                 case 2:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-6.5f, 6.5f), 6, -3.5f), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-6.5f, 6.5f), 10, -3.5f), Quaternion.Euler(rotate));
                     break;
                 case 3:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-4.5f, 4.5f), 5, -5.5f), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-4.5f, 4.5f), 8, -5.5f), Quaternion.Euler(rotate));
                     break;
                 case 4:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-2.5f, 2.5f), 4, -7.5f), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-2.5f, 2.5f), 6, -7.5f), Quaternion.Euler(rotate));
                     break;
                 case 5:
-                    rotate = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), Random.Range(-180f, 180f));
-                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-0.5f, 0.5f), 2, -9.5f), Quaternion.Euler(rotate));
-                    yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+                    Instantiate(prefabs[Random.Range(0, 7)], new Vector3(Random.Range(-0.5f, 0.5f), 4, -9.5f), Quaternion.Euler(rotate));
                     break;
                 default:
                     break;
             }
+            yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
         }
         /*
         while (true) {

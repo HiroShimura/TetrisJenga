@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour {
 
         // Pauseのためのif文
         if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log("a");
             if (gameOverPanel) {
                 return;
             }

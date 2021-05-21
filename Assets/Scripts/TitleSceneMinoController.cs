@@ -6,6 +6,7 @@ public class TitleSceneMinoController : MonoBehaviour {
     Vector3 rotate;
 
     void Awake() {
+        Time.timeScale = 1;
         StartCoroutine(TitleSceneCoroutine());
     }
 

@@ -36,11 +36,11 @@ public class Mino : MonoBehaviour {
     }
 
     void Update() {
-        if (transform.position.y < -5 && gameController != null) {
+        if (transform.position.y < -10 && gameController != null) {
             GameController _gameController = gameController.GetComponent<GameController>();
             _gameController.GameOver();
         }
-        else if (transform.position.y < -6) {
+        else if (transform.position.y < -11) {
             Destroy(gameObject);
         }
     }

@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// GameビューにてSceneビューのようなカメラの動きをマウス操作によって実現する
-/// </summary>
-[RequireComponent(typeof(Camera))]
-public class CameraController : MonoBehaviour {
+// Cameraの動きに合わせてBGを動かすようにCameraControllerを改造したもの
+public class BGController : MonoBehaviour {
 
     [SerializeField, Range(0.1f, 10f)]
     private float wheelSpeed = 1f;
@@ -37,7 +34,7 @@ public class CameraController : MonoBehaviour {
     }
 
     void MouseWheel(float delta) {
-        transform.position += transform.forward * delta * wheelSpeed;
+        transform.position = transform.forward * delta * wheelSpeed;
         return;
     }
 

@@ -20,9 +20,9 @@ public class JengaController : MonoBehaviour {
 
     void Awake() {
         int random = Random.Range(0, 4); // 向きを決める乱数
-        Layers = 1; // PlayerPrefs.GetInt("Layer", 8); // オプションで設定した段数を代入
+        Layers = PlayerPrefs.GetInt("Layer", 8); // オプションで設定した段数を代入
         for (int i = 1; i < Layers + 1; i++) {
-            float high = i * 0.15f + 0.7f; // 生成する高さを決定
+            float high = i + 0.15f * 0.8f; // 生成する高さを決定
             int type = Random.Range(1, 11); // どのタイプを積むのかを選定
             switch (type) {
                 case 1:

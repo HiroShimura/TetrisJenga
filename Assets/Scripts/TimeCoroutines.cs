@@ -9,14 +9,19 @@ public class TimeCoroutines : MonoBehaviour {
     [SerializeField] GameObject minoController;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject countDownUI;
-    [SerializeField] GameObject Time;
+    [SerializeField] GameObject Timer;
     GameController _gameController;
     TimeManager timer;
     Text countDownText;
 
+    Vector3 defaultCameraPos;
+    Vector3 nextCameraPos;
+    int turnNum = 0;
+
     void Awake() {
+        defaultCameraPos = Camera.main.transform.position;
         // 各キャッシュを取得
-        timer = Time.GetComponent<TimeManager>();
+        timer = Timer.GetComponent<TimeManager>();
         _gameController = gameController.GetComponent<GameController>();
         countDownText = countDownUI.GetComponent<Text>();
     }
@@ -35,6 +40,16 @@ public class TimeCoroutines : MonoBehaviour {
         timer.NotNull = false; // 空中にミノはない(はずな)ので切り替え
         yield return new WaitForSeconds(5);
         minoController.SetActive(false); // 操作無効化
+        turnNum++;
+        nextCameraPos = new Vector3(defaultCameraPos.x + turnNum, defaultCameraPos.y + turnNum, 0);
+        /*
+        while (true) {
+            if (Camera.main.transform.position == nextCameraPos) {
+                break;
+            }
+            Camera.main.transform.Translate(nextCameraPos * Time.deltaTime);
+        }
+        */
 
         // UI表示
         countDownText.fontSize = 50;
